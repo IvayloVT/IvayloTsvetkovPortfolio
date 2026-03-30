@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Ivaylo Tsvetkov</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #3482f6;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --bg-light-blue: #f8fbff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- HEADER --- */
+        .site-header {
+            padding: 24px 0;
+            background-color: var(--bg-light-blue);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            margin: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 4px;
+        }
+
+        /* Portfolio Hero */
+        .portfolio-hero {
+            background-color: rgb(146, 193, 237);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .portfolio-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            padding: 80px 0;
+        }
+
+        .project-card {
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover { transform: translateY(-10px); }
+
+        .image-wrapper {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #f3f4f6;
+            margin-bottom: 20px;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-flex">
+            <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="portfolio-hero">
+        <div class="container">
+            <h1>Selected Works</h1>
+            <p>Optimizing digital infrastructure through rigorous network testing, web analysis, and structured project oversight.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="portfolio-grid">
+            <a href="p1.html" class="project-card">
+                <div class="image-wrapper"><img src="pm.jpg" alt="Project"></div>
+                <div class="project-info">
+                    <h2>Project Management</h2>
+                    <p>A comprehensive end-to-end project lifecycle analysis, focusing on resource allocation, risk mitigation, and stakeholder communication to ensure on-time delivery.</p>
+                </div>
+            </a>
+            <a href="p2.html" class="project-card">
+                <div class="image-wrapper"><img src="ns.jpg" alt="Project"></div>
+                <div class="project-info">
+                    <h2>Network & Security</h2>
+                    <p>Technical deep-dive into network architecture and security. Leveraged Wireshark for real-time traffic analysis and Packet Tracer for simulating scalable, secure network topologies.</p>
+                </div>
+            </a>
+            <a href="p3.html" class="project-card">
+                <div class="image-wrapper"><img src="sw.jpg" alt="Project"></div>
+                <div class="project-info">
+                    <h2>Scripting & Web Technologies</h2>
+                    <p>Turning data into insights. A detailed breakdown of a live website’s architecture to identify and resolve performance criticalities.</p>
+                </div>
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>
