@@ -123,7 +123,18 @@
             font-size: 1.8rem;
             margin: 10px 0;
         }
+        .tags {
+            display: flex;
+            gap: 8px;
+        }
 
+        .tag {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            color: var(--text-muted);
+        }
         @media (max-width: 768px) {
             .portfolio-hero h1 { font-size: 2.5rem; }
         }
@@ -147,7 +158,7 @@
 
     <section class="portfolio-hero">
         <div class="container">
-            <h1>Selected Works</h1>
+            <h1>Project Management | Network & Security | Scripting | Web Technology</h1>
             <p>Optimizing digital infrastructure through rigorous network testing, web analysis, and structured project oversight.</p>
         </div>
     </section>
@@ -155,31 +166,43 @@
     <main class="container">
         <div class="portfolio-grid">
             <a href="p1.html" class="project-card">
-                <div class="image-wrapper"><img src="pm.jpg" alt="Project"></div>
+                <div class="image-wrapper"><img src="port1.jpg" alt="Project"></div>
                 <div class="project-info">
-                    <h2>Project Management</h2>
+                    <h2>Development of a Structured NHS Patient Logbook Application</h2>
                     <p>A comprehensive end-to-end project lifecycle analysis, focusing on resource allocation, risk mitigation, and stakeholder communication to ensure on-time delivery.</p>
+                    <div class="tags">
+                    <span class="tag">Project Management</span>
+                </div> 
                 </div>
             </a>
             <a href="p2.html" class="project-card">
-                <div class="image-wrapper"><img src="ns.jpg" alt="Project"></div>
+                <div class="image-wrapper"><img src="port2.jpg" alt="Project"></div>
                 <div class="project-info">
-                    <h2>Network & Security</h2>
+                    <h2>Network Analysis Report: Wireshark & Packet Tracer</h2>
                     <p>Technical deep-dive into network architecture and security. Leveraged Wireshark for real-time traffic analysis and Packet Tracer for simulating scalable, secure network topologies.</p>
+                    <div class="tags">
+                    <span class="tag">Network & Security</span>
+                </div> 
                 </div>
             </a>
             <a href="p3.html" class="project-card">
-                <div class="image-wrapper"><img src="sw.jpg" alt="Project"></div>
+                <div class="image-wrapper"><img src="port3.jpg" alt="Project"></div>
                 <div class="project-info">
-                    <h2>Scripting & Web Technologies</h2>
+                    <h2>Detailed Analysis of the Pizza UNO Sunderland Website</h2>
                     <p>Turning data into insights. A detailed breakdown of Pizza UNO Sunderland website’s architecture to identify and resolve performance criticalities.</p>
+                    <div class="tags">
+                    <span class="tag">Scripting & Web Technologies</span>
+                </div> 
                 </div>
             </a>
             <a href="p4.html" class="project-card">
-                <div class="image-wrapper"><img src="sw.jpg" alt="Project"></div>
+                <div class="image-wrapper"><img src="port4.jpg" alt="Project"></div>
                 <div class="project-info">
-                    <h2>Scripting & Web Technologies</h2>
+                    <h2>Pizza Uno Analysis: Web Development & Implementation</h2>
                     <p>Developed a new, optimized web platform for Pizza UNO Sunderland, transforming a slow legacy architecture into a high-speed, scalable solution.</p>
+                <div class="tags">
+                    <span class="tag">Scripting & Web Technologies</span>
+                </div>   
                 </div>
             </a>
         </div>
