@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Ivaylo Tsvetkov</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  
+    <link rel="manifest" href="/manifest.json">
+
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+    }
+    </script>
+    
     <style>
         :root {
             --primary-blue: #3482f6;
@@ -154,7 +162,13 @@
             border-radius: 12px;
             margin-bottom: 16px;
             overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.4s ease;
         }
+
+        .card-img:hover { transform: translateY(-10px); }
+        
 
         .card-img img {
             width: 100%;
@@ -172,7 +186,7 @@
             color: var(--text-muted);
             margin-bottom: 12px;
         }
-
+        
         .tags {
             display: flex;
             gap: 8px;
@@ -183,7 +197,10 @@
             padding: 2px 8px;
             border: 1px solid #cbd5e1;
             border-radius: 4px;
-            color: var(--text-muted);
+            color: var(--primary-blue);
+            font-weight: 500;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
         /* Mobile Responsive */
@@ -237,7 +254,7 @@
                 <a href="p1.html" style="text-decoration: none; color: inherit;">
                     <div class="card-img"><img src="pm.jpg" alt="Project Management"></div>
                     <h3>Project Management</h3>
-                    <p>Strategy, Oversight, and Execution.</p>
+                    <p>Strategy, Oversight and Execution.</p>
                 </a>
                 <div class="tags">
                     <span class="tag">Management</span> <span class="tag">Strategy</span>
