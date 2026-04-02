@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Ivaylo Tsvetkov</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary-blue: #3482f6;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --bg-light-blue: #f8fbff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- HEADER --- */
+        .site-header {
+            padding: 24px 0;
+            background-color: var(--bg-light-blue);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            margin: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 4px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: rgb(146, 193, 237);
+            padding: 60px 0 100px;
+        }
+
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .hero-image img {
+            max-width: 350px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 450px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .btn-blue {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--text-dark);
+            color: var(--text-dark);
+        }
+
+        /* --- FEATURED WORK --- */
+        .featured {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .card-img {
+            background: #e2e8f0;
+            height: 200px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.4s ease;
+        }
+
+        .card-img:hover { transform: translateY(-10px); }
+        
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        
+        .tags {
+            display: flex;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            color: var(--primary-blue);
+            font-weight: 500;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-flex, .work-grid {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 2.5rem; }
+        }
+      
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-flex">
+            <div class="logo">IVAYLO TSVETKOV</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-flex">
+            <div class="hero-text">
+                <h1>Hi, I’m Ivaylo.<br>I am building the digital defenses of tomorrow, one packet at a time.</h1>
+                <p class="hero-sub">Front-End Developer & Cyber Security Specialist based in Leicester. Combining creativity with technology.</p>
+                <div class="btn-group">
+                    <a href="portfolio.html" class="btn btn-blue">View My Portfolio</a>
+                    <a href="contact.html" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="ivaylo.jpg" alt="Ivaylo Tsvetkov Portrait">
+            </div>
+        </div>
+    </section>
+
+    <main class="container featured">
+        <h2 class="section-title">Featured Work</h2>
+        <div class="work-grid">
+            
+            <div class="card">
+                <a href="p1.html" style="text-decoration: none; color: inherit;">
+                    <div class="card-img"><img src="pm.jpg" alt="Project Management"></div>
+                    <h3>Project Management</h3>
+                    <p>Strategy, Oversight and Execution.</p>
+                </a>
+                <div class="tags">
+                    <span class="tag">Management</span> <span class="tag">Strategy</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <a href="p2.html" style="text-decoration: none; color: inherit;">
+                    <div class="card-img"><img src="ns.jpg" alt="Network & Security"></div>
+                    <h3>Network & Security</h3>
+                    <p>Network Synthesis & Traffic Diagnostics.</p>
+                </a>
+                <div class="tags">
+                    <span class="tag">Wireshark</span> <span class="tag">Cisco</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <a href="p3.html" style="text-decoration: none; color: inherit;">
+                    <div class="card-img"><img src="sw.jpg" alt="Scripting & Web Technologies"></div>
+                    <h3>Scripting & Web Technologies</h3>
+                    <p>Full-Stack Web Audit & Optimization.</p>
+                </a>
+                <div class="tags">
+                    <span class="tag">HTML</span> <span class="tag">CSS</span> <span class="tag">Java</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
