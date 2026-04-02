@@ -18,7 +18,7 @@
             margin: 0;
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
-            line-height: 1.7;
+            line-height: 1.6; /* Matched to index/contact */
             background-color: #fff;
         }
 
@@ -46,6 +46,7 @@
             letter-spacing: 1px;
             font-weight: 700;
             color: var(--text-dark); 
+            text-decoration: none; /* Added to match contact */
         }
 
         .nav-links {
@@ -68,18 +69,12 @@
             padding-bottom: 4px;
         }
 
-
-        /* --- ABOUT HERO --- */
-        .about-hero {
+        /* --- HERO SECTION --- */
+        /* Updated to match the "Hero" structure of Index/Contact */
+        .hero {
             background-color: rgb(146, 193, 237);
             padding: 80px 0;
             text-align: center;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            margin-bottom: 16px;
         }
 
         .breadcrumb {
@@ -88,29 +83,46 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin: 0;
         }
 
         /* --- CONTENT SECTION --- */
         .about-content {
             padding: 80px 0;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 60px;
+            display: flex; /* Changed from grid to flex for better control */
             align-items: center;
-            padding-left: 40px;
-            padding-right: 40px;
+            gap: 60px;
+        }
+
+        .about-image {
+            flex: 1;
         }
 
         .about-image img {
-            width: 350px;
+            width: 100%;
+            max-width: 400px;
             border-radius: 12px;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1.5;
         }
 
         .about-text h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-top: 0;
-            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
         .about-text p {
@@ -122,35 +134,44 @@
         /* --- SKILLS GRID --- */
         .skills-section {
             background-color: #fafafa;
-            padding: 60px 0;
+            padding: 80px 0;
             border-top: 1px solid var(--border-color);
         }
 
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
+            gap: 40px;
         }
 
         .skill-category h3 {
             font-size: 1.1rem;
             border-bottom: 2px solid var(--primary-blue);
             display: inline-block;
-            margin-bottom: 15px;
-        
+            margin-bottom: 20px;
+            padding-bottom: 4px;
         }
 
         .skill-category ul {
             list-style: none;
             padding: 0;
-  
+            margin: 0;
         }
 
         .skill-category li {
             color: var(--text-muted);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-category li::before {
+            content: "•";
+            color: var(--primary-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
         }
 
         /* --- CTA FOOTER --- */
@@ -167,13 +188,27 @@
             text-decoration: none;
             font-weight: 600;
             display: inline-block;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
         }
-        .btn-contact:hover { transform: translateY(-3px); }
+
+        .btn-contact:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
 
         @media (max-width: 768px) {
-            .about-content, .skills-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 2.8rem; }
+            .about-content { 
+                flex-direction: column; 
+                text-align: center;
+            }
+            .about-image img {
+                margin: 0 auto;
+            }
+            .skills-grid { 
+                grid-template-columns: 1fr; 
+                gap: 30px;
+            }
+            h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -181,7 +216,7 @@
 
     <header class="site-header">
         <div class="container header-flex">
-            <div class="logo">IVAYLO TSVETKOV</div>
+            <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -193,47 +228,49 @@
         </div>
     </header>
 
-    <section class="about-hero">
+    <section class="hero">
         <div class="container">
             <span class="breadcrumb">My Journey</span>
-            <h1>Front-End Developer & Cyber Security Specialist</h1>
+            <h1>Front-End Developer & <br>Cyber Security Specialist</h1>
         </div>
     </section>
 
-    <section class="container about-content">
+    <main class="container about-content">
         <div class="about-image">
-            <img src="ivaylo2.jpg" alt="Ivaylo working">
+            <img src="ivaylo2.jpg" alt="Ivaylo Tsvetkov">
         </div>
         <div class="about-text">
             <h2>Clean code meets digital integrity.</h2>
-            <p>Blending front-end development with cyber security creates a unique vantage point where <strong>user experience meets digital integrity.</strong> While most developers focus on how a site looks and feels, my background in cyber security ensures that every interface I build is "secure by design" rather than as an afterthought. I don't just bridge the gap between the user and the data, I protect that bridge. By integrating <strong>Zero Trust</strong> mindset into the UI/UX process, I ensure that aesthetics never come at the cost of vulnerability, effectively neutralizing threats like Cross-Site Scripting (XSS) and Injection attack before they ever reach the user's screen.</p>
-    </section>
+            <p>Blending front-end development with cyber security creates a unique vantage point where <strong>user experience meets digital integrity.</strong> While most developers focus on how a site looks and feels, my background in cyber security ensures that every interface I build is "secure by design" rather than as an afterthought.</p>
+            <p>I don't just bridge the gap between the user and the data, I protect that bridge. By integrating a <strong>Zero Trust</strong> mindset into the UI/UX process, I ensure that aesthetics never come at the cost of vulnerability, effectively neutralizing threats like Cross-Site Scripting (XSS) and Injection attacks before they ever reach the user's screen.</p>
+        </div>
+    </main>
 
     <section class="skills-section">
         <div class="container">
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>Front-End & Web Development</h3>
+                    <h3>Front-End & Web</h3>
                     <ul>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>Java</li>
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript / Java</li>
+                        <li>Responsive Design</li>
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h3>Cybersecurity & Networking</h3>
+                    <h3>Cyber & Networking</h3>
                     <ul>
-                        <li>Wireshark</li>
-                        <li>Packet Tracer</li>
-                        <li>Python</li>
+                        <li>Wireshark Diagnostics</li>
+                        <li>Cisco Packet Tracer</li>
+                        <li>Python Scripting</li>
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h3>Data & Operations</h3>
+                    <h3>Data & Ops</h3>
                     <ul>
                         <li>Project Management</li>
-                        <li>SQL</li>
-                        <li></li>
+                        <li>SQL Databases</li>
+                        <li>Technical Auditing</li>
                     </ul>
                 </div>
             </div>
