@@ -187,29 +187,11 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero-flex {
-                flex-direction: column-reverse; /* Put text below image for better flow */
-                text-align: center;
-                padding: 40px 0;
+            .hero-flex, .work-grid {
+                flex-direction: column;
+                grid-template-columns: 1fr;
             }
-
-            .hero-image img {
-                max-width: 280px; /* Smaller image for mobile */
-                margin: 0 auto;
-            }
-
-            .hero-sub {
-                margin: 0 auto 24px;
-            }
-
-            .btn-group {
-                flex-direction: column; /* Stacks buttons */
-                width: 100%;
-            }
-
-            .work-grid {
-                grid-template-columns: 1fr; /* Single column cards */
-            }
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
