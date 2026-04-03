@@ -173,9 +173,18 @@
             background-color: var(--android-green); 
         }
 
-        /* Optional: Make the icon pulse slightly to draw attention */
-        .download-apk i {
-            color: var(--android-green);
+        /* Target the icons specifically */
+        .gmail i { color: var(--gmail-red); }
+        .linkedin i { color: var(--linkedin-blue); }
+        .github i { color: var(--github-black); }
+        .instagram i { color: var(--instagram-pink); }
+        /* Android is already handled in your code, but kept here for consistency */
+        .download-apk i { color: var(--android-green); } 
+
+        .social-link-card i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s ease; /* Adds a smooth feel */
         }
 
         @media (max-width: 768px) {
