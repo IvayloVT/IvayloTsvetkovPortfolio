@@ -5,23 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Ivaylo Tsvetkov</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #3482f6;
             --text-dark: #0f172a;
             --text-muted: #64748b;
             --bg-light-blue: #f8fbff;
-            /* Brand Colors */
-            --linkedin: #0077b5;
-            --github: #24292e;
-            --instagram: #e4405f;
-            --gmail: #ea4335;
+            /* Colors for the Left Borders */
+            --gmail-red: #ea4335;
+            --linkedin-blue: #0077b5;
+            --github-black: #24292e;
+            --instagram-pink: #e4405f;
         }
 
         body {
             margin: 0;
-            padding: 0;
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
             background-color: #ffffff;
@@ -34,7 +33,7 @@
             padding: 0 24px;
         }
 
-        /* --- HEADER (Matched to Blog) --- */
+        /* --- HEADER --- */
         .site-header {
             padding: 24px 0;
             background-color: var(--bg-light-blue);
@@ -75,79 +74,102 @@
             padding-bottom: 4px;
         }
 
-        /* --- HERO SECTION (Matched to Blog) --- */
+        /* --- HERO SECTION (Aligned to Left per image style) --- */
         .hero {
             background-color: rgb(146, 193, 237);
-            padding: 80px 0;
-            text-align: center;
+            padding: 100px 0;
+            text-align: center; /* Left aligned per image */
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            margin: 0 0 15px 0;
+            font-size: 3rem;
+            margin-bottom: 20px;
             color: var(--text-dark);
+            text-align: center;
         }
 
         .hero-sub {
             color: var(--text-muted);
             font-size: 1.2rem;
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto; 
+            text-align: center;
         }
 
         /* --- CONTACT CONTENT --- */
-        .contact-info {
+        .contact-content {
             padding: 80px 0;
         }
 
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .social-card {
+        .links-container {
+            max-width: 500px; /* Constraints the card width for balance */
+            margin: 0 auto; /* Centers the whole stack */
             display: flex;
             flex-direction: column;
+            gap: 20px;
+        }
+
+        /* --- THE CARD STYLE (UPDATED) --- */
+        .social-link-card {
+            display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            background: #fff;
-            border: 1px solid #e2e8f0;
+            justify-content: center; /* Icons and text centered in the card */
+            padding: 20px;
+            background-color: white;
             border-radius: 12px;
             text-decoration: none;
             color: var(--text-dark);
-            transition: all 0.3s ease;
+            position: relative; /* Essential for the ::before element */
+            overflow: hidden; /* Keeps the rounded corners perfect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Soft shadow */
         }
 
-        .social-card i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+        .social-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
-        .social-card span {
-            font-weight: 600;
-            font-size: 1rem;
+        /* The Colored Left Border */
+        .social-link-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 8px; /* Width of the colored bar */
+            border-radius: 12px 0 0 12px; /* Rounds only the left side */
         }
 
-        .social-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary-blue);
+        /* Card Icons */
+        .social-link-card i {
+            font-size: 1.5rem;
+            margin-right: 15px; /* Spacing between icon and text */
         }
 
-        /* Brand hover colors */
-        .gmail:hover i { color: var(--gmail); }
-        .linkedin:hover i { color: var(--linkedin); }
-        .github:hover i { color: var(--github); }
-        .instagram:hover i { color: var(--instagram); }
+        /* Card Text */
+        .social-link-card span {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Individual Colored Borders */
+        .gmail::before { background-color: var(--gmail-red); }
+        .linkedin::before { background-color: var(--linkedin-blue); }
+        .github::before { background-color: var(--github-black); }
+        .instagram::before { background-color: var(--instagram-pink); }
+
+        /* Icon Colors on Hover (Optional, matches image vibe) */
+        .social-link-card:hover i {
+            /* Example: Icons turn blue on hover, text stays dark */
+            color: var(--primary-blue);
+        }
 
         @media (max-width: 768px) {
             .header-flex { flex-direction: column; gap: 20px; }
             .hero h1 { font-size: 2.2rem; }
-            .social-grid { grid-template-columns: 1fr; }
+            .links-container { max-width: 100%; }
         }
     </style>
 </head>
@@ -175,24 +197,24 @@
         </div>
     </section>
 
-    <main class="container contact-info">
-        <div class="social-grid">
-            <a href="mailto:ivaylovt@gmail.com" class="social-card gmail">
+    <main class="container contact-content">
+        <div class="links-container">
+            <a href="mailto:ivaylovt@gmail.com" class="social-link-card gmail" title="Email Me">
                 <i class="fas fa-envelope"></i>
                 <span>Send an Email</span>
             </a>
 
-            <a href="https://www.linkedin.com/in/ivaylo-tsvetkov-576b6699/" target="_blank" class="social-card linkedin">
-                <i class="fab fa-linkedin"></i>
+            <a href="https://www.linkedin.com/in/ivaylo-tsvetkov-576b6699/" target="_blank" class="social-link-card linkedin" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
                 <span>Connect on LinkedIn</span>
             </a>
 
-            <a href="https://github.com/IvayloVT" target="_blank" class="social-card github">
-                <i class="fab fa-github"></i>    
+            <a href="https://github.com/IvayloVT" target="_blank" class="social-link-card github" title="GitHub">
+                <i class="fab fa-github"></i>
                 <span>Follow on GitHub</span>
             </a>
 
-            <a href="https://www.instagram.com/ivaylo.tsvetkov.1/\" target="_blank" class="social-card instagram">
+            <a href="https://www.instagram.com/ivaylo.tsvetkov.1/" target="_blank" class="social-link-card instagram" title="Instagram">
                 <i class="fab fa-instagram"></i>
                 <span>Follow on Instagram</span>
             </a>
