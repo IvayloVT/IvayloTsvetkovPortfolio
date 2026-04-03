@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Ivaylo Tsvetkov</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #3482f6;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --bg-light-blue: #f8fbff;
+            /* Brand Colors */
+            --linkedin: #0077b5;
+            --github: #24292e;
+            --instagram: #e4405f;
+            --gmail: #ea4335;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- HEADER (Matched to Blog) --- */
+        .site-header {
+            padding: 24px 0;
+            background-color: var(--bg-light-blue);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            margin: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 4px;
+        }
+
+        /* --- HERO SECTION (Matched to Blog) --- */
+        .hero {
+            background-color: rgb(146, 193, 237);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin: 0 0 15px 0;
+            color: var(--text-dark);
+        }
+
+        .hero-sub {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- CONTACT CONTENT --- */
+        .contact-info {
+            padding: 80px 0;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .social-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .social-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .social-card span {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-blue);
+        }
+
+        /* Brand hover colors */
+        .gmail:hover i { color: var(--gmail); }
+        .linkedin:hover i { color: var(--linkedin); }
+        .github:hover i { color: var(--github); }
+        .instagram:hover i { color: var(--instagram); }
+
+        @media (max-width: 768px) {
+            .header-flex { flex-direction: column; gap: 20px; }
+            .hero h1 { font-size: 2.2rem; }
+            .social-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-flex">
+            <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p class="hero-sub">I am always open to discussing new technical projects or architectural challenges. Let's build the digital defenses of tomorrow together.</p>
+        </div>
+    </section>
+
+    <main class="container contact-info">
+        <div class="social-grid">
+            <a href="mailto:ivaylovt@gmail.com" class="social-card gmail">
+                <i class="fas fa-envelope"></i>
+                <span>Send an Email</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/ivaylo-tsvetkov-576b6699/" target="_blank" class="social-card linkedin">
+                <i class="fab fa-linkedin"></i>
+                <span>Connect on LinkedIn</span>
+            </a>
+
+            <a href="https://github.com/IvayloVT" target="_blank" class="social-card github">
+                <i class="fab fa-github"></i>    
+                <span>Follow on GitHub</span>
+            </a>
+
+            <a href="https://www.instagram.com/ivaylo.tsvetkov.1/\" target="_blank" class="social-card instagram">
+                <i class="fab fa-instagram"></i>
+                <span>Follow on Instagram</span>
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>
