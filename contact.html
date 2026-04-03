@@ -17,6 +17,8 @@
             --linkedin-blue: #0077b5;
             --github-black: #24292e;
             --instagram-pink: #e4405f;
+            --android-green: #3DDC84;
+            --download-blue: #007bff;
         }
 
         body {
@@ -166,6 +168,16 @@
             color: var(--primary-blue);
         }
 
+        /* Specific styling for the Download Card */
+        .download-apk::before { 
+            background-color: var(--android-green); 
+        }
+
+        /* Optional: Make the icon pulse slightly to draw attention */
+        .download-apk i {
+            color: var(--android-green);
+        }
+
         @media (max-width: 768px) {
             .header-flex { flex-direction: column; gap: 20px; }
             .hero h1 { font-size: 2.2rem; }
@@ -217,6 +229,11 @@
             <a href="https://www.instagram.com/ivaylo.tsvetkov.1/" target="_blank" class="social-link-card instagram" title="Instagram">
                 <i class="fab fa-instagram"></i>
                 <span>Follow on Instagram</span>
+            </a>
+
+            <a href="app.apk" download="app.apk" class="social-link-card download-apk" title="Download APK">
+                <i class="fab fa-android"></i>
+                <span>Download Android App</span>
             </a>
         </div>
     </main>
