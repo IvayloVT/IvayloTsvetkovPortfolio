@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Ivaylo Tsvetkov</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Variables matched exactly to index.html */
+            --primary-blue: #3482f6;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --bg-light-blue: #f8fbff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #ffffff;
+            top: 0 !important; /* Prevents layout shifting when translated */
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- MOBILE FRIENDLY HEADER --- */
+        .site-header {
+            padding: 24px 0;
+            background-color: var(--bg-light-blue);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Matches index.html logic */
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px; /* Standardized gap */
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 4px;
+        }
+
+        /* --- CUSTOM TRANSLATOR BUTTON --- */
+        .lang-switch {
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            min-width: 50px;
+            justify-content: center;
+        }
+
+        .lang-switch:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        /* Hide the default Google Translate UI */
+        #google_translate_element, .goog-te-banner-frame, .skiptranslate {
+            display: none !important;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: rgb(146, 193, 237);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .breadcrumb {
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin: 0;
+            color: var(--text-dark);
+        }
+
+        /* --- ABOUT CONTENT --- */
+        .about-content {
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 12px;
+            display: block;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .about-text {
+            flex: 1.5;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+            color: #444;
+        }
+
+        /* --- SKILLS GRID --- */
+        .skills-section {
+            background-color: #fafafa;
+            padding: 80px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .skill-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--primary-blue);
+            display: inline-block;
+            margin-bottom: 20px;
+            padding-bottom: 4px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-category li {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-category li::before {
+            content: "•";
+            color: var(--primary-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+        }
+
+        /* --- FOOTER --- */
+        .about-footer {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .about-footer h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-contact {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        /* --- MOBILE MEDIA QUERIES (Updated from index.html) --- */
+        @media (max-width: 768px) {
+            .header-flex {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 12px;
+            }
+            .nav-links li:last-child {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            .about-content { flex-direction: column; text-align: center; }
+            .about-image img { margin: 0 auto; }
+            .skills-grid { grid-template-columns: 1fr; gap: 30px; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-flex">
+            <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li>
+                        <button class="lang-switch" onclick="toggleLanguage()">
+                            <span id="lang-text">BG</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="google_translate_element"></div>
+
+    <section class="hero">
+        <div class="container">
+            <span class="breadcrumb">My Journey</span>
+            <h1>Front-End Developer & <br>Cyber Security Specialist</h1>
+        </div>
+    </section>
+
+    <main class="container about-content">
+        <div class="about-image">
+            <img src="ivaylo2.jpg" alt="Ivaylo Tsvetkov">
+        </div>
+        <div class="about-text">
+            <h2>Clean code meets digital integrity.</h2>
+            <p>Blending front-end development with cyber security creates a unique vantage point where <strong>user experience meets digital integrity.</strong></p>
+            <p>I don't just bridge the gap between the user and the data, I protect that bridge. By integrating a <strong>Zero Trust</strong> mindset into the UI/UX process, I ensure that aesthetics never come at the cost of vulnerability.</p>
+        </div>
+    </main>
+
+    <section class="skills-section">
+        <div class="container">
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Front-End & Web</h3>
+                    <ul>
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript / Java</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Cyber & Networking</h3>
+                    <ul>
+                        <li>Wireshark Diagnostics</li>
+                        <li>Cisco Packet Tracer</li>
+                        <li>Python Scripting</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Data & Ops</h3>
+                    <ul>
+                        <li>Project Management</li>
+                        <li>SQL Databases</li>
+                        <li>Technical Auditing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="about-footer">
+        <div class="container">
+            <h2>Let's build something together.</h2>
+            <a href="contact.html" class="btn-contact">Get In Touch</a>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,bg',
+                autoDisplay: false
+            }, 'google_translate_element');
+            
+            // Check for saved preference on load
+            setTimeout(applySavedLanguage, 1000);
+        }
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('preferredLang') || 'en';
+            const newLang = (currentLang === 'en') ? 'bg' : 'en';
+            
+            changeLanguage(newLang);
+        }
+
+        function changeLanguage(langCode) {
+            const select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = langCode;
+                select.dispatchEvent(new Event('change'));
+                localStorage.setItem('preferredLang', langCode);
+                updateButtonText(langCode);
+            }
+        }
+
+        function applySavedLanguage() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && savedLang !== 'en') {
+                changeLanguage(savedLang);
+            } else {
+                updateButtonText('en');
+            }
+        }
+
+        function updateButtonText(lang) {
+            const btn = document.getElementById('lang-text');
+            if(btn) {
+                btn.innerText = (lang === 'en') ? 'BG' : 'EN';
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
