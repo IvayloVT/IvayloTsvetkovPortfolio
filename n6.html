@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Title | Entertainment Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Mode Palette */
+            --bg-body: #ffffff;
+            --bg-surface: #f8fafc;
+            --accent-primary: #3482f6; 
+            --accent-red: #ef4444;
+            --text-main: #0f172a;
+            --text-dim: #64748b;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            top: 0 !important; /* Prevent Google Translate shift */
+        }
+
+        /* --- TOP NAVIGATION BAR --- */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .exit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            color: var(--accent-red);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .exit-btn:hover {
+            background: #fee2e2;
+            transform: scale(1.05);
+        }
+
+        /* --- GOOGLE TRANSLATE STYLING --- */
+        .lang-switch {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            color: var(--text-main);
+        }
+
+        .lang-switch:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        #google_translate_element, .goog-te-banner-frame, .skiptranslate {
+            display: none !important;
+        }
+
+        /* --- ARTICLE CONTAINER --- */
+        .article-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background: #eff6ff;
+            color: var(--accent-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.75rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .meta {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* --- CONTENT & WRAPPING LOGIC --- */
+        .content {
+            position: relative;
+        }
+
+        .content::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .portrait-wrapper {
+            float: left;
+            width: 300px;
+            margin: 0 2rem 1.5rem 0;
+        }
+
+        .portrait-placeholder {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            background-color: #e2e8f0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #cbd5e1;
+        }
+
+        .portrait-placeholder::after {
+            content: 'Portrait Photo';
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .caption-text {
+            font-size: 0.85rem; 
+            color: var(--text-dim); 
+            text-align: center; 
+            margin-top: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-main);
+            margin-top: 2rem;
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            color: #334155;
+        }
+        .portrait-img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 4; /* Keeps the portrait shape */
+            object-fit: cover;   /* Ensures the image fills the area without stretching */
+            border-radius: 12px; /* Matches the theme's rounded corners */
+            display: block;
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2.1rem; }
+            .top-nav { padding: 0.5rem 1rem; }
+            .portrait-wrapper {
+                float: none;
+                width: 100%;
+                margin: 0 0 1.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="news.html" class="exit-btn" title="Back to News">✕</a>
+
+        <button class="lang-switch" onclick="toggleLanguage()">
+            <span id="lang-text">BG</span>
+        </button>
+    </nav>
+
+    <div id="google_translate_element"></div>
+
+    <main class="article-container">
+        <span class="category-tag">The Culture</span>
+        <h1>The Fall of Diddy: From Harlem Dreamer to Scandal-Plagued Mogul</h1>
+        
+        <div class="meta">
+            Published April 5, 2026 • 6 min read
+        </div>
+
+        <section class="content">
+            <div class="portrait-wrapper">
+                <img src="n6a.jpg" alt="Description of person" class="portrait-img">
+                
+            </div>
+
+            <h2>Origins: Harlem, Upbringing, and Early Ambition</h2>
+            <p>
+            Sean John Combs, known to the world through names such as Puff Daddy, P. Diddy, and Diddy, was born on November 4, 1969, in Harlem, New York City. His early life was shaped by both hardship and aspiration. His father, Melvin Combs, was killed when Sean was still very young, leaving his mother, Janice Combs, to raise him. She worked hard to provide structure, discipline, and stability, and those values would later influence Sean’s relentless drive for success.
+            </p>
+            <p>
+            Raised partly in Mount Vernon, New York, Combs developed an early understanding of image, hustle, and ambition. He attended Howard University, where he studied business, but he left before graduating in order to pursue a career in the music industry. Even at a young age, he showed a sharp instinct for promotion, branding, and networking - qualities that would eventually help turn him into one of the most recognizable figures in American entertainment.
+            </p>
+
+            <h2>His Start in Music</h2>
+            <p>
+            Combs began his career at Uptown Records as an intern. His rise was fast. He built a reputation as a creative talent executive with a gift for spotting stars and shaping sound, image, and commercial appeal. While still young, he worked with artists who helped define R&amp;B and hip-hop in the early 1990s. But after his departure from Uptown, he made the move that changed his life: he founded Bad Boy Records.
+            </p>
+            <p>
+            Bad Boy became one of the most influential labels of its era. It was flashy, aggressive, commercially smart, and deeply tied to the sound of East Coast hip-hop. Combs was not simply a label owner; he was a brand architect. He understood how to make music into spectacle and artists into cultural symbols.
+            </p>
+
+            <h2>Bad Boy Records and Signing The Notorious B.I.G.</h2>
+            <p>
+            The defining move of Combs’ early empire was signing Christopher Wallace, better known as The Notorious B.I.G. Biggie’s talent was immediate and undeniable. With Bad Boy behind him, he became one of the most important rappers of the 1990s. His debut album <em>Ready to Die</em> was both critically praised and commercially successful, and it helped restore New York’s dominance in rap at a time when the West Coast was leading the culture.
+            </p>
+            <p>
+            Biggie was more than an artist for Combs - he was the foundation of Bad Boy’s credibility. Together, they represented a polished but dangerous version of East Coast rap, combining radio success with street authenticity. Biggie’s rise also turned Combs into a central figure in the music industry.
+            </p>
+
+            <h2>The Death Row Feud</h2>
+            <p>
+            As Bad Boy rose, tensions with Death Row Records intensified. What began as rivalry soon became one of the most infamous conflicts in music history. Death Row, led by Suge Knight and associated with artists such as Tupac Shakur and Dr. Dre, stood as Bad Boy’s West Coast counterpart. The feud became symbolic of a wider East Coast versus West Coast war that dominated headlines, interviews, songs, and award shows.
+            </p>
+            <p>
+            Diss tracks, media narratives, and public taunts deepened the hostility. The competition between labels was no longer just about record sales. It had become personal, cultural, and increasingly dangerous.
+            </p>
+
+            <h2>Allegations Surrounding Tupac’s Murder</h2>
+            <p>
+            After Tupac Shakur was murdered in Las Vegas in 1996, speculation spread rapidly. Over the years, some allegations and theories attempted to connect Sean Combs to events surrounding Tupac’s killing. These allegations have long circulated in media discussions, documentaries, interviews, and street narratives. However, such claims have remained deeply controversial and disputed, and Combs has denied wrongdoing.
+            </p>
+            <p>
+            The murders of Tupac Shakur in 1996 and The Notorious B.I.G. in 1997 cast a permanent shadow over the era. Both deaths transformed hip-hop history and placed the executives, artists, and rival labels involved under intense public scrutiny for decades.
+            </p>
+
+            <h2>From Music Executive to Mogul</h2>
+            <p>
+            Despite the chaos of the late 1990s, Combs reinvented himself as more than a music executive. He became an entrepreneur and eventually a mogul. He expanded into fashion with Sean John, into media, and into alcohol branding through his association with Cîroc vodka. That move was especially significant because it helped establish a new model for celebrity business partnerships.
+            </p>
+            <p>
+            Diddy was no longer just selling songs - he was selling lifestyle, luxury, aspiration, and status. His image shifted from record executive to boardroom kingmaker. For years, he was celebrated as an example of hip-hop’s business evolution, a man who had turned street culture into corporate power.
+            </p>
+
+            <h2>The Party Image and “Freak Off” Allegations</h2>
+            <p>
+            As his wealth grew, so did his reputation for excess. Diddy became known for extravagant parties attended by celebrities, industry figures, athletes, and influencers. These gatherings were often described as symbols of luxury and access. Over time, however, that glamorous image began to darken as rumors and later allegations emerged about what happened behind closed doors.
+            </p>
+            <p>
+            Public conversations increasingly focused on alleged “freak off” events, coercive conduct, and a hidden culture of manipulation and exploitation. Names connected to different eras of his life, including Kim Porter, Cassie Ventura, and people linked through celebrity gossip such as 50 Cent’s public commentary about Diddy, became part of a much wider and more disturbing narrative.
+            </p>
+
+            <h2>Kim Porter, Cassie and the Erosion of the Public Image</h2>
+            <p>
+            Kim Porter, the mother of several of Diddy’s children, was a major figure in his personal life. Their relationship was complex, deeply intertwined, and often watched closely by the public. After her death in 2018, she remained a sensitive and emotional part of the larger story surrounding Combs.
+            </p>
+            <p>
+            Cassie Ventura, however, became central to what would later become the collapse of Diddy’s public standing. Their relationship had long been known publicly, but much more serious allegations later emerged. Cassie’s legal action would become a turning point, not only for Diddy’s image but for the legal exposure that followed.
+            </p>
+
+            <h2>The Cassie Lawsuit and the Reported Settlement</h2>
+            <p>
+            Cassie sued Sean Combs, accusing him of abuse, coercion, violence, and controlling behavior during their relationship. The case shocked the entertainment world, not just because of the seriousness of the allegations, but because it settled with remarkable speed. Reports widely stated that the matter was resolved for a substantial financial settlement, frequently cited in public discussion as approximately $20 million.
+            </p>
+            <p>
+            Rather than ending the story, the settlement intensified public scrutiny. It opened the floodgates for broader attention, further accusations, renewed media investigation, and eventually greater legal consequences. What may once have been dismissed as gossip or rumor was now being examined through lawsuits, statements, evidence claims, and law-enforcement attention.
+            </p>
+
+            <div class="quote">
+            The settlement did not close the scandal. It became the moment many people believe the walls began to fall.
+            </div>
+
+            <h2>The Case, Brian Steel and the Collapse of Control</h2>
+            <p>
+            As investigations and allegations expanded, Diddy’s situation entered a much more serious legal phase. His case moved beyond celebrity controversy and into a broader discussion about criminal exposure, coercive conduct, and abuse of power. High-profile legal representation, including attorney Brian Steel in public reporting and discussion about the defense, became part of the evolving courtroom narrative.
+            </p>
+            <p>
+            The wider case transformed Diddy from a figure of entertainment gossip into a symbol of potential corporate and personal misconduct at the highest level of celebrity culture. The details reported in public conversation have contributed to a dramatic reversal of image: from mogul and tastemaker to defendant and cautionary tale.
+            </p>
+            <p>
+            References to sentencing claims, including discussions of a “50 month conviction,” have circulated in online conversations, though such matters require careful verification against current court records and reliable reporting. Still, what is clear is that the legal pressure surrounding Diddy has become central to how the public now understands his legacy.
+            </p>
+
+            <h2>“No Diddy” and the Internet Turning on Him</h2>
+            <p>
+            One of the most striking parts of Diddy’s downfall has been the way internet culture absorbed his name. The phrase “no Diddy” began spreading online and in casual speech as a slang expression meant to distance a speaker from anything that could be interpreted as sexually suggestive between men. In practice, it became a replacement for older phrases used to avoid perceived double meanings.
+            </p>
+            <p>
+            The phrase is controversial and often rooted in mockery, homophobia, or careless internet humor. Its spread shows how quickly a once-powerful celebrity can become a meme, then a punchline, and finally a symbol of public disgrace. Diddy’s name, once associated with luxury, chart success, and elite status, began to function in popular slang as shorthand for something embarrassing, suspicious, or socially awkward.
+            </p>
+
+            <h2>The Fall</h2>
+            <p>
+            Sean Combs built one of the most powerful brands in hip-hop history. He helped shape careers, redefine executive power in music, and prove that a rapper or producer could become a major business force across multiple industries. For years, he stood as a symbol of success, reinvention, and influence.
+            </p>
+            <p>
+            Yet his fall has been just as dramatic as his rise. The same empire that once made him untouchable became the backdrop against which allegations of abuse, manipulation, and excess were judged. Public opinion shifted. Former glamour looked sinister. Lavish parties became objects of suspicion. Celebrity relationships became evidence in a broader moral and legal collapse.
+            </p>
+            <p>
+            In the end, the story of Diddy is no longer simply about music, wealth, or fame. It is about how power can conceal conduct for years, how celebrity culture can normalize excess, and how quickly an empire can fracture when the image no longer holds.
+            </p>
+            <p><em>Lasting question: where should the boundary lie between art and evidence?</em></p>
+        
+        </section>
+    </main>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,bg',
+                autoDisplay: false
+            }, 'google_translate_element');
+            
+            setTimeout(applySavedLanguage, 1000);
+        }
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('preferredLang') || 'en';
+            const newLang = (currentLang === 'en') ? 'bg' : 'en';
+            changeLanguage(newLang);
+        }
+
+        function changeLanguage(langCode) {
+            const select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = langCode;
+                select.dispatchEvent(new Event('change'));
+                localStorage.setItem('preferredLang', langCode);
+                updateButtonText(langCode);
+            }
+        }
+
+        function applySavedLanguage() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && savedLang !== 'en') {
+                changeLanguage(savedLang);
+            } else {
+                updateButtonText('en');
+            }
+        }
+
+        function updateButtonText(lang) {
+            const btn = document.getElementById('lang-text');
+            if(btn) {
+                btn.innerText = (lang === 'en') ? 'BG' : 'EN';
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
