@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Ivaylo Tsvetkov</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #3482f6;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --bg-light-blue: #f8fbff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #ffffff;
+            top: 0 !important;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- MOBILE FRIENDLY HEADER --- */
+        .site-header {
+            padding: 24px 0;
+            background-color: var(--bg-light-blue);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 4px;
+        }
+
+        .lang-switch {
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            min-width: 50px;
+            justify-content: center;
+        }
+
+        #google_translate_element, .goog-te-banner-frame, .skiptranslate {
+            display: none !important;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: rgb(146, 193, 237);
+            padding: 80px 0;
+        }
+
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #1e293b;
+            margin-bottom: 30px;
+        }
+
+        /* Hero Image */
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Hero Buttons */
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--text-dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- FEATURED GRID --- */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 80px 0;
+        }
+
+        .card {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .image-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* --- MOBILE MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            .header-flex {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .nav-links li:last-child {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            .hero-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-btns {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-flex">
+            <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li>
+                        <button class="lang-switch" onclick="toggleLanguage()">
+                            <span id="lang-text">BG</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="google_translate_element"></div>
+
+    <section class="hero">
+        <div class="container hero-flex">
+            <div class="hero-text">
+                <h1>Hi, I'm Ivaylo. <br>I am building digital defenses of tomorrow, one packet at a time.</h1>
+                <p>Front-End Developer & Cyber Security Specialist based in Leicester. Combining creativity with technology.</p>
+                
+                <div class="hero-btns">
+                    <a href="portfolio.html" class="btn btn-primary">View My Portfolio</a>
+                    <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="ivaylo.jpg" alt="Ivaylo Tsvetkov Profile">
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="featured-grid">
+            <a href="p1.html" class="card">
+                <div class="image-wrapper"><img src="pm.jpg" alt="Project Management"></div>
+                <div class="tags"><span class="tag" style="background-color: #ffedd5; color: #9a3412;">Management</span></div>
+                <h2>Project Management</h2>
+                <p>Strategy and Execution for technical infrastructure.</p>
+            </a>
+            <a href="p2.html" class="card">
+                <div class="image-wrapper"><img src="ns.jpg" alt="Security"></div>
+                <div class="tags"><span class="tag" style="background-color: #dcfce7; color: #166534;">Cyber Security</span></div>
+                <h2>Network & Security</h2>
+                <p>Network Synthesis & Traffic Diagnostics.</p>
+            </a>
+            <a href="p3.html" class="card">
+                <div class="image-wrapper"><img src="sw.jpg" alt="Web"></div>
+                <div class="tags"><span class="tag" style="background-color: #e0f2fe; color: #0369a1;">Development</span></div>
+                <h2>Web Technologies</h2>
+                <p>Full-Stack Web Audit and Optimization.</p>
+            </a>
+        </div>
+    </main>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,bg',
+                autoDisplay: false
+            }, 'google_translate_element');
+            setTimeout(applySavedLanguage, 1000);
+        }
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('preferredLang') || 'en';
+            const newLang = (currentLang === 'en') ? 'bg' : 'en';
+            changeLanguage(newLang);
+        }
+
+        function changeLanguage(langCode) {
+            const select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = langCode;
+                select.dispatchEvent(new Event('change'));
+                localStorage.setItem('preferredLang', langCode);
+                updateButtonText(langCode);
+            }
+        }
+
+        function applySavedLanguage() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && savedLang !== 'en') {
+                changeLanguage(savedLang);
+            } else {
+                updateButtonText('en');
+            }
+        }
+
+        function updateButtonText(lang) {
+            const btn = document.getElementById('lang-text');
+            if(btn) btn.innerText = (lang === 'en') ? 'BG' : 'EN';
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Title | Entertainment Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Mode Palette */
+            --bg-body: #ffffff;
+            --bg-surface: #f8fafc;
+            --accent-primary: #3482f6; 
+            --accent-red: #ef4444;
+            --text-main: #0f172a;
+            --text-dim: #64748b;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            top: 0 !important; /* Prevent Google Translate shift */
+        }
+
+        /* --- TOP NAVIGATION BAR --- */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .exit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            color: var(--accent-red);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .exit-btn:hover {
+            background: #fee2e2;
+            transform: scale(1.05);
+        }
+
+        /* --- GOOGLE TRANSLATE STYLING --- */
+        .lang-switch {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            color: var(--text-main);
+        }
+
+        .lang-switch:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        #google_translate_element, .goog-te-banner-frame, .skiptranslate {
+            display: none !important;
+        }
+
+        /* --- ARTICLE CONTAINER --- */
+        .article-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background: #eff6ff;
+            color: var(--accent-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.75rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .meta {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* --- CONTENT & WRAPPING LOGIC --- */
+        .content {
+            position: relative;
+        }
+
+        .content::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .portrait-wrapper {
+            float: left;
+            width: 300px;
+            margin: 0 2rem 1.5rem 0;
+        }
+
+        .portrait-placeholder {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            background-color: #e2e8f0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #cbd5e1;
+        }
+
+        .portrait-placeholder::after {
+            content: 'Portrait Photo';
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .caption-text {
+            font-size: 0.85rem; 
+            color: var(--text-dim); 
+            text-align: center; 
+            margin-top: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-main);
+            margin-top: 2rem;
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            color: #334155;
+        }
+        .portrait-img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 4; /* Keeps the portrait shape */
+            object-fit: cover;   /* Ensures the image fills the area without stretching */
+            border-radius: 12px; /* Matches the theme's rounded corners */
+            display: block;
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2.1rem; }
+            .top-nav { padding: 0.5rem 1rem; }
+            .portrait-wrapper {
+                float: none;
+                width: 100%;
+                margin: 0 0 1.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="news.html" class="exit-btn" title="Back to News">✕</a>
+
+        <button class="lang-switch" onclick="toggleLanguage()">
+            <span id="lang-text">BG</span>
+        </button>
+    </nav>
+
+    <div id="google_translate_element"></div>
+
+    <main class="article-container">
+        <span class="category-tag">The Culture</span>
+        <h1>Lil Durk: The Intersection of Drill Music,
+Street Culture, and Federal Justice</h1>
+        
+        <div class="meta">
+            Published April 5, 2026 • 6 min read
+        </div>
+
+        <section class="content">
+            <div class="portrait-wrapper">
+                <img src="n1a.jpg" alt="Description of person" class="portrait-img">
+                
+            </div>
+
+            <p>Lil Durk was born on October 19, 1992, in Englewood, one of Chicago’s most economically
+deprived and crime-affected areas (Anderson, 1999). His father, Dontay Banks Sr., received
+a life sentence for drug-related offences when Durk was an infant, significantly shaping his
+upbringing.</p>
+            <p>Research indicates that children raised in environments with parental
+incarceration are more likely to experience poverty and engage in high-risk behaviours. Durk himself has referenced periods of food insecurity,
+highlighting the structural inequalities present in his early life.</p>
+
+
+            <p>Durk began releasing music independently before signing with Def Jam Recordings in 2013.
+His early work, including I’m a Hitta (2011), contributed to the rise of drill music—a genre
+characterised by its raw depiction of violence and street life. Drill music has
+been both celebrated and criticised. While it offers authentic narratives, scholars argue it
+can also reinforce cycles of violence by amplifying real-world conflicts.</p>
+            
+            <p>Durk’s affiliation with the Black Disciples and residence in Parkway Gardens (O’Block)
+placed him within one of Chicago’s most documented gang rivalries. The conflict with
+Gangster Disciples-affiliated groups, often referred to as “63rd,” has been widely discussed
+in both media and academic literature.</p>
+            
+            <p>In August 2020, FBG Duck (Carlton Weekly) was killed in Chicago’s Gold Coast area. The
+attack, involving multiple shooters, marked a significant escalation in gang violence,
+occurring in a high-profile commercial district (Chicago Police Department, 2020). This
+incident demonstrates how gang conflicts can extend beyond local neighbourhoods into
+public spaces, increasing public safety concerns.</p>
+
+            <P>Durk’s brother, D-Thang, was killed in 2021, deeply affecting him and his circle. Studies
+show that exposure to repeated trauma and bereavement increases the likelihood of
+retaliatory violence and psychological distress.</P>
+
+            <P>Durk’s close associate, King Von (Dayvon Bennett), was killed in Atlanta in November 2020
+following an altercation involving Quando Rondo’s associates. The case gained attention due
+to the application of self-defence laws, illustrating differences in legal frameworks across
+U.S. states.</P>
+
+            <P>Federal prosecutors allege that Lil Durk was involved in organising a retaliatory attack in
+2022 targeting Quando Rondo. The shooting resulted in the death of his cousin, Saviay&#39;a
+Robinson. Charges include: conspiracy to commit murder-for-hire; use of interstate
+commerce in commission of violence; firearms-related offences. According to the FBI, such
+cases often involve coordinated planning across state lines, increasing their severity under
+federal law.</P>
+
+            <p>Durk is represented by high-profile attorney Drew Findling. The legal strategy has included
+attempts to dismiss charges and challenge evidentiary procedures. The trial has been
+postponed multiple times, now expected in August 2026. Reasons include the complexity of
+multi-defendant cases, large volumes of digital and forensic evidence, and coordination
+between co-defendants. Such delays are common in federal conspiracy cases, where
+preparation requires extensive time (U.S. Courts, 2023).</p>
+
+            <P>Lil Durk’s case highlights several broader issues: structural inequality, cultural influence of
+drill music, cycles of violence following personal loss, and the role of the criminal justice
+system in gang-related cases. The overlap between music and real-life events complicates
+the distinction between artistic expression and criminal activity.</P>
+
+            <p>The life of Lil Durk represents a complex intersection of environment, culture, and law. His
+journey from poverty in Chicago to international fame is overshadowed by ongoing violence
+and legal challenges. This case underscores the long-term consequences of systemic
+
+inequality and highlights the need for broader social interventions to address the root
+causes of urban violence.</p>
+
+        </section>
+    </main>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,bg',
+                autoDisplay: false
+            }, 'google_translate_element');
+            
+            setTimeout(applySavedLanguage, 1000);
+        }
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('preferredLang') || 'en';
+            const newLang = (currentLang === 'en') ? 'bg' : 'en';
+            changeLanguage(newLang);
+        }
+
+        function changeLanguage(langCode) {
+            const select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = langCode;
+                select.dispatchEvent(new Event('change'));
+                localStorage.setItem('preferredLang', langCode);
+                updateButtonText(langCode);
+            }
+        }
+
+        function applySavedLanguage() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && savedLang !== 'en') {
+                changeLanguage(savedLang);
+            } else {
+                updateButtonText('en');
+            }
+        }
+
+        function updateButtonText(lang) {
+            const btn = document.getElementById('lang-text');
+            if(btn) {
+                btn.innerText = (lang === 'en') ? 'BG' : 'EN';
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
