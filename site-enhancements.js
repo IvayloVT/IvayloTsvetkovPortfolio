@@ -63,7 +63,6 @@
     if (header) {
         body.classList.add("header-scroll-enabled");
         var mobileMedia = window.matchMedia("(max-width: 768px)");
-        var revealThreshold = 48;
         var resizeTimer;
 
         function syncMobileHeaderOffset() {
@@ -88,9 +87,7 @@
                 return;
             }
 
-            var currentScrollY = window.scrollY;
-
-            if (currentScrollY <= revealThreshold) {
+            if (window.scrollY <= 0) {
                 body.classList.remove("header-hidden");
                 return;
             }

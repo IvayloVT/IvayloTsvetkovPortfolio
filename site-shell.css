@@ -110,7 +110,9 @@ body.header-scroll-enabled .site-header {
 
 body.header-hidden .site-header {
     transform: translate3d(0, calc(-100% - 2px), 0) !important;
-    opacity: 0.98;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
 body.codex-ready main,
