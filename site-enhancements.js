@@ -20,7 +20,10 @@
         body.insertBefore(skip, body.firstChild);
     }
 
-    if (!document.querySelector(".site-footer-shell")) {
+    var path = (window.location.pathname || "").toLowerCase();
+    var skipFooter = body.classList.contains("no-site-footer") || path.endsWith("/intro.html") || path === "/intro.html" || path.endsWith("/intro");
+
+    if (!skipFooter && !document.querySelector(".site-footer-shell")) {
         var footer = document.createElement("footer");
         footer.className = "site-footer-shell";
         footer.innerHTML =
