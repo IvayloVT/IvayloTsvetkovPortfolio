@@ -64,28 +64,8 @@
         body.classList.add("header-scroll-enabled");
         var mobileMedia = window.matchMedia("(max-width: 768px)");
         var lastScrollY = window.scrollY;
-        var minDelta = 10;
-        var revealThreshold = 24;
-        var resizeTimer;
-
-        function syncMobileHeaderOffset() {
-            if (mobileMedia.matches) {
-                body.style.setProperty("--mobile-header-offset", header.offsetHeight + "px");
-            } else {
-                body.style.setProperty("--mobile-header-offset", "0px");
-                body.classList.remove("header-hidden");
-            }
-        }
-
-        syncMobileHeaderOffset();
-
-        window.addEventListener("resize", function () {
-            clearTimeout(resizeTimer);
-            resizeTimer = window.setTimeout(function () {
-                syncMobileHeaderOffset();
-                lastScrollY = window.scrollY;
-            }, 80);
-        });
+        var minDelta = 2;
+        var revealThreshold = 8;
 
         window.addEventListener("scroll", function () {
             if (!mobileMedia.matches) {
@@ -104,6 +84,7 @@
             }
 
             if (Math.abs(delta) < minDelta) {
+                lastScrollY = currentScrollY;
                 return;
             }
 
