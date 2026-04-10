@@ -46,7 +46,9 @@
       justify-content: center;
       text-align: center;
       padding: 24px;
+      overflow-x: hidden;
     }
+    img { max-width: 100%; }
     .container { max-width: 960px; width: 100%; }
     .card {
       background: var(--panel);
@@ -119,10 +121,13 @@
     }
     @media (max-width: 600px) {
       .card { padding: 40px 24px; }
+      h1 { font-size: clamp(2.4rem, 13vw, 3.4rem); }
+      p { font-size: 0.98rem; line-height: 1.72; }
+      .buttons a { width: 100%; }
     }
   </style>
 </head>
-<body>
+<body class="no-site-footer">
   <div class="container">
     <div class="card">
       <div class="eyebrow">Rap Stories</div>
