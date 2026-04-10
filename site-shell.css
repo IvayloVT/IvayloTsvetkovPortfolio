@@ -29,6 +29,81 @@ button:focus-visible,
     will-change: transform;
 }
 
+body .site-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+    line-height: normal !important;
+    backdrop-filter: blur(18px) !important;
+    background: rgba(5, 11, 20, 0.72) !important;
+    border-bottom: 1px solid rgba(162, 188, 222, 0.18) !important;
+}
+
+body .site-header .header-flex {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 24px !important;
+    padding: 18px 0 !important;
+}
+
+body .site-header .logo {
+    text-decoration: none !important;
+    color: #eff6ff !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    line-height: normal !important;
+}
+
+body .site-header nav {
+    width: auto;
+}
+
+body .site-header .nav-links {
+    list-style: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-wrap: wrap !important;
+}
+
+body .site-header .nav-links a,
+body .site-header .lang-switch {
+    text-decoration: none !important;
+    color: #a9bdd9 !important;
+    font-size: 0.92rem !important;
+    line-height: normal !important;
+    font-weight: 700 !important;
+    padding: 10px 14px !important;
+    border-radius: 999px !important;
+    border: 1px solid transparent !important;
+    background: transparent !important;
+    transition: 0.25s ease !important;
+}
+
+body .site-header .nav-links a:hover,
+body .site-header .nav-links a.active,
+body .site-header .lang-switch:hover {
+    color: #eff6ff !important;
+    border-color: rgba(162, 188, 222, 0.18) !important;
+    background: rgba(125, 211, 252, 0.08) !important;
+}
+
+body .site-header .lang-switch {
+    cursor: pointer !important;
+    font-family: inherit !important;
+}
+
+body.header-scroll-enabled .site-header {
+    position: sticky !important;
+    top: 0;
+    z-index: 20;
+}
+
 body.header-hidden .site-header {
     transform: translateY(calc(-100% - 2px));
 }
@@ -177,6 +252,51 @@ body.motion-safe [data-reveal].is-visible {
 
     .site-footer-brand h2 {
         font-size: clamp(1.8rem, 9vw, 2.5rem);
+    }
+}
+
+@media (max-width: 768px) {
+    body .site-header {
+        position: sticky !important;
+        top: 0 !important;
+        backdrop-filter: none !important;
+        background: rgba(5, 11, 20, 0.94) !important;
+    }
+
+    body .site-header .header-flex {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    body .site-header nav {
+        width: 100% !important;
+    }
+
+    body .site-header .logo {
+        font-size: 1.55rem !important;
+    }
+
+    body .site-header .nav-links {
+        width: 100% !important;
+        gap: 8px !important;
+    }
+
+    body .site-header .nav-links li {
+        width: calc(50% - 4px) !important;
+    }
+
+    body .site-header .nav-links li:last-child {
+        width: 100% !important;
+    }
+
+    body .site-header .nav-links a {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    body .site-header .lang-switch {
+        width: 100% !important;
     }
 }
 

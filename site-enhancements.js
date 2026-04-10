@@ -57,8 +57,8 @@
     }
 
     var header = document.querySelector(".site-header");
-    var isHomePage = /(^|\/)index\.html$/.test(window.location.pathname) || window.location.pathname === "/" || /\/$/.test(window.location.pathname);
-    if (header && !isHomePage) {
+    if (header) {
+        body.classList.add("header-scroll-enabled");
         var lastScrollY = window.scrollY;
         var minDelta = 10;
         var revealThreshold = 24;
