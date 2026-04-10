@@ -63,23 +63,6 @@
     if (header) {
         body.classList.add("header-scroll-enabled");
         var mobileMedia = window.matchMedia("(max-width: 768px)");
-        var resizeTimer;
-
-        function syncMobileHeaderOffset() {
-            if (mobileMedia.matches) {
-                body.style.setProperty("--mobile-header-offset", header.offsetHeight + "px");
-            } else {
-                body.style.setProperty("--mobile-header-offset", "0px");
-                body.classList.remove("header-hidden");
-            }
-        }
-
-        syncMobileHeaderOffset();
-
-        window.addEventListener("resize", function () {
-            clearTimeout(resizeTimer);
-            resizeTimer = window.setTimeout(syncMobileHeaderOffset, 80);
-        });
 
         window.addEventListener("scroll", function () {
             if (!mobileMedia.matches) {

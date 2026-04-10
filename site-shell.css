@@ -17,10 +17,6 @@
     top: 16px;
 }
 
-:root {
-    --mobile-header-offset: 0px;
-}
-
 a:focus-visible,
 button:focus-visible,
 [tabindex]:focus-visible {
@@ -263,10 +259,6 @@ body.motion-safe [data-reveal].is-visible {
 }
 
 @media (max-width: 768px) {
-    body.header-scroll-enabled {
-        padding-top: var(--mobile-header-offset);
-    }
-
     body .site-header {
         position: fixed !important;
         top: 0 !important;
