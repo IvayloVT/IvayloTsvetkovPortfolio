@@ -662,15 +662,19 @@ html,body{margin:0!important;padding:0!important;overflow-x:hidden!important}
       page.style.transform='';
       page.style.height='';
       page.style.width='';
+      page.style.left='';
       if(!mobile){return;}
       var baseWidth=page.offsetWidth||page.getBoundingClientRect().width;
       var baseHeight=page.offsetHeight||page.getBoundingClientRect().height;
       var available=Math.max(window.innerWidth-24,240);
       var scale=Math.min(1,available/baseWidth);
+      var scaledWidth=baseWidth*scale;
+      var offset=Math.max((window.innerWidth-scaledWidth)/2,0);
       page.style.width=baseWidth+'px';
       page.style.height=(baseHeight*scale)+'px';
+      page.style.left=offset+'px';
       page.style.transform='scale('+scale+')';
-      page.style.transformOrigin='top center';
+      page.style.transformOrigin='top left';
     });
   }
   window.addEventListener('load',fitPdfPages);
