@@ -24,6 +24,15 @@ button:focus-visible,
     outline-offset: 3px;
 }
 
+.site-header {
+    transition: transform 0.28s ease, background-color 0.28s ease, border-color 0.28s ease;
+    will-change: transform;
+}
+
+body.header-hidden .site-header {
+    transform: translateY(calc(-100% - 2px));
+}
+
 body.codex-ready main,
 body.codex-ready section,
 body.codex-ready article,
@@ -151,6 +160,23 @@ body.motion-safe [data-reveal].is-visible {
 @media (max-width: 900px) {
     .site-footer-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .site-footer-shell {
+        width: min(100% - 24px, 1180px);
+        padding: 24px 20px;
+        margin-bottom: 24px;
+        border-radius: 24px;
+    }
+
+    .site-footer-column {
+        padding: 18px;
+    }
+
+    .site-footer-brand h2 {
+        font-size: clamp(1.8rem, 9vw, 2.5rem);
     }
 }
 
