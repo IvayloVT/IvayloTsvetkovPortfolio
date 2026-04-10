@@ -63,38 +63,39 @@
     if (header) {
         body.classList.add("header-scroll-enabled");
         var mobileMedia = window.matchMedia("(max-width: 768px)");
-        var lastScrollY = window.scrollY;
-        var minDelta = 2;
-        var revealThreshold = 8;
+        var revealThreshold = 48;
+        var resizeTimer;
+
+        function syncMobileHeaderOffset() {
+            if (mobileMedia.matches) {
+                body.style.setProperty("--mobile-header-offset", header.offsetHeight + "px");
+            } else {
+                body.style.setProperty("--mobile-header-offset", "0px");
+                body.classList.remove("header-hidden");
+            }
+        }
+
+        syncMobileHeaderOffset();
+
+        window.addEventListener("resize", function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(syncMobileHeaderOffset, 80);
+        });
 
         window.addEventListener("scroll", function () {
             if (!mobileMedia.matches) {
                 body.classList.remove("header-hidden");
-                lastScrollY = window.scrollY;
                 return;
             }
 
             var currentScrollY = window.scrollY;
-            var delta = currentScrollY - lastScrollY;
 
             if (currentScrollY <= revealThreshold) {
                 body.classList.remove("header-hidden");
-                lastScrollY = currentScrollY;
                 return;
             }
 
-            if (Math.abs(delta) < minDelta) {
-                lastScrollY = currentScrollY;
-                return;
-            }
-
-            if (delta > 0) {
-                body.classList.add("header-hidden");
-            } else {
-                body.classList.remove("header-hidden");
-            }
-
-            lastScrollY = currentScrollY;
+            body.classList.add("header-hidden");
         }, { passive: true });
     }
 
