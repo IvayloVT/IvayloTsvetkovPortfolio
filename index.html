@@ -53,6 +53,11 @@
                 radial-gradient(circle at 85% 10%, rgba(45, 212, 191, 0.12), transparent 24%),
                 linear-gradient(180deg, #09111f 0%, #0b1526 40%, #050b14 100%);
             top: 0 !important;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
         }
 
         a {
@@ -493,12 +498,42 @@
                 align-items: flex-start;
             }
 
+            .site-header {
+                position: relative;
+                backdrop-filter: none;
+                background: rgba(5, 11, 20, 0.94);
+            }
+
+            .container {
+                width: min(100% - 24px, 1180px);
+            }
+
+            .logo {
+                font-size: 1.55rem;
+            }
+
+            nav {
+                width: 100%;
+            }
+
             .nav-links {
                 justify-content: flex-start;
+                width: 100%;
+                gap: 8px;
+            }
+
+            .nav-links li {
+                width: calc(50% - 4px);
             }
 
             .nav-links li:last-child {
                 width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                text-align: center;
             }
 
             .lang-switch {
@@ -507,7 +542,48 @@
             }
 
             .hero {
-                padding-top: 44px;
+                padding: 28px 0 24px;
+            }
+
+            .hero-copy,
+            .hero-visual,
+            .section-card {
+                padding: 24px 20px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.45rem, 12vw, 3.7rem);
+                line-height: 0.98;
+            }
+
+            .hero-lead {
+                font-size: 0.98rem;
+                margin: 18px 0 24px;
+            }
+
+            .hero-btns {
+                margin-bottom: 24px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .hero-visual {
+                padding: 18px;
+            }
+
+            .hero-image {
+                min-height: 0;
+                aspect-ratio: 4 / 5;
+                border-radius: 20px;
+            }
+
+            .featured-case-card img,
+            .image-wrapper {
+                min-height: 0;
+                height: auto;
+                aspect-ratio: 4 / 3;
             }
 
             .feature-strip {
