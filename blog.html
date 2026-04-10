@@ -1,442 +1,154 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Editorial writing from Ivaylo Tsvetkov on design, security, systems, and the future of digital products.">
+    <meta name="theme-color" content="#07111f">
+    <meta name="color-scheme" content="dark">
+    <meta property="og:title" content="Blog | Ivaylo Tsvetkov">
+    <meta property="og:description" content="Editorial writing from Ivaylo Tsvetkov on design, security, systems, and the future of digital products.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="ivaylo.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog | Ivaylo Tsvetkov">
+    <meta name="twitter:description" content="Editorial writing from Ivaylo Tsvetkov on design, security, systems, and the future of digital products.">
+    <meta name="twitter:image" content="ivaylo.jpg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="site-shell.css">
     <title>Blog | Ivaylo Tsvetkov</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Variables matched exactly to index.html */
-            --primary-blue: #3482f6;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --bg-light-blue: #f8fbff;
-            --border-color: #e2e8f0;
+            --text: #eff6ff;
+            --muted: #a9bdd9;
+            --line: rgba(162, 188, 222, 0.18);
+            --panel: rgba(15, 28, 49, 0.82);
+            --panel-soft: rgba(255, 255, 255, 0.04);
+            --shadow: 0 22px 70px rgba(3, 10, 25, 0.45);
         }
-
+        * { box-sizing: border-box; }
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: #ffffff;
-            top: 0 !important; /* Prevents layout shifting when translated */
+            font-family: 'Manrope', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 32%),
+                linear-gradient(180deg, #09111f 0%, #0b1526 100%);
+            top: 0 !important;
         }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* --- MOBILE FRIENDLY HEADER (Applied from index.html) --- */
+        .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
         .site-header {
-            padding: 24px 0;
-            background-color: var(--bg-light-blue);
+            position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px);
+            background: rgba(5, 11, 20, 0.72); border-bottom: 1px solid var(--line);
         }
-
-        .header-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap; /* Matches index.html logic */
-        }
-
+        .header-flex { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 18px 0; }
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-            font-weight: 700;
-            color: var(--text-dark);
-            text-decoration: none;
+            text-decoration: none; color: var(--text); font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem; font-weight: 700; letter-spacing: 0.08em;
         }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px; /* Standardized gap from index.html */
-            margin: 0;
-            padding: 0;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: flex-end;
+        .nav-links { list-style: none; display: flex; align-items: center; gap: 10px; margin: 0; padding: 0; flex-wrap: wrap; }
+        .nav-links a, .lang-switch {
+            text-decoration: none; color: var(--muted); font-size: 0.92rem; font-weight: 700;
+            padding: 10px 14px; border-radius: 999px; border: 1px solid transparent; background: transparent; transition: 0.25s ease;
         }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            font-weight: 500;
-            white-space: nowrap;
+        .nav-links a:hover, .nav-links a.active, .lang-switch:hover {
+            color: var(--text); border-color: var(--line); background: rgba(125, 211, 252, 0.08);
         }
-
-        .nav-links a.active {
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--primary-blue);
-            padding-bottom: 4px;
+        .lang-switch { cursor: pointer; font-family: inherit; }
+        #google_translate_element, .goog-te-banner-frame, .skiptranslate { display: none !important; }
+        .hero, .blog-wrap {
+            width: min(1180px, calc(100% - 40px)); margin: 36px auto 0;
+            background: var(--panel); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); overflow: hidden;
         }
-
-        /* --- CUSTOM TRANSLATOR BUTTON --- */
-        .lang-switch {
-            background: white;
-            border: 1px solid #cbd5e1;
-            padding: 6px 14px; /* Updated padding for better tap target */
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            min-width: 50px;
-            justify-content: center;
+        .hero { padding: 42px; }
+        .eyebrow {
+            display: inline-flex; padding: 8px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em;
+            text-transform: uppercase; color: #d7f1ff; background: rgba(125, 211, 252, 0.1); border: 1px solid rgba(125, 211, 252, 0.16);
         }
-
-        .lang-switch:hover {
-            border-color: var(--primary-blue);
-            color: var(--primary-blue);
-        }
-
-        /* Hide Google Translate UI */
-        #google_translate_element, .goog-te-banner-frame, .skiptranslate {
-            display: none !important;
-        }
-
-        /* --- BLOG HERO --- */
-        .blog-hero {
-            background-color: rgb(146, 193, 237);
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .blog-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .blog-hero p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* --- BLOG GRID --- */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            padding: 80px 0;
-        }
-
+        .hero h1, .blog-card h2 { font-family: 'Cormorant Garamond', serif; }
+        .hero h1 { font-size: clamp(3rem, 5vw, 4.8rem); line-height: 0.96; margin: 18px 0 16px; }
+        .hero p { max-width: 70ch; color: var(--muted); }
+        .blog-wrap { padding: 30px; margin-bottom: 36px; }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
         .blog-card {
-            background: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            color: inherit;
+            background: var(--panel-soft); border-radius: 22px; overflow: hidden; transition: 0.25s ease;
+            text-decoration: none; color: inherit; border: 1px solid var(--line); display: block;
         }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .image-wrapper {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .blog-content {
-            padding: 24px;
-        }
-
+        .blog-card:hover { transform: translateY(-6px); border-color: rgba(125, 211, 252, 0.3); box-shadow: 0 20px 44px rgba(0,0,0,0.24); }
+        .image-wrapper { width: 100%; height: 200px; overflow: hidden; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .blog-content { padding: 20px; }
         .category-tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 12px;
+            display: inline-block; padding: 6px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 800;
+            margin-bottom: 12px; letter-spacing: 0.03em;
         }
-
-        .blog-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin: 0 0 12px 0;
-            line-height: 1.3;
-        }
-
-        .blog-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .read-more {
-            color: var(--primary-blue);
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        /* --- MOBILE MEDIA QUERIES (Updated from index.html) --- */
+        .blog-card h2 { font-size: 2rem; line-height: 1; margin: 0 0 10px; }
+        .blog-card p { color: var(--muted); margin: 0 0 16px; }
+        .read-more { color: #d7f1ff; font-weight: 800; text-decoration: none; }
         @media (max-width: 768px) {
-            .header-flex {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            .nav-links {
-                justify-content: center;
-                gap: 12px;
-            }
-            .nav-links li:last-child {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                margin-top: 10px;
-            }
-            .blog-hero h1 { font-size: 2.5rem; }
+            .header-flex { flex-direction: column; align-items: flex-start; }
+            .nav-links li:last-child { width: 100%; }
+            .lang-switch { width: 100%; }
+            .hero, .blog-wrap { padding: 24px; }
         }
     </style>
 </head>
 <body>
-
     <header class="site-header">
         <div class="container header-flex">
             <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="blog.html" class="active">Blog</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li>
-                        <button class="lang-switch" onclick="toggleLanguage()">
-                            <span id="lang-text">BG</span>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
+            <nav><ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><button class="lang-switch" onclick="toggleLanguage()"><span id="lang-text">BG</span></button></li>
+            </ul></nav>
         </div>
     </header>
-
     <div id="google_translate_element"></div>
 
-    <section class="blog-hero">
-        <div class="container">
-            <h1>Pixel-Perfect Protection</h1>
-            <p>Welcome to the intersection of pixel-perfect design and proactive defense, where I share insights on building interfaces that are as beautiful as they are secure. This blog explores how to create seamless user experiences without ever compromising on system integrity.</p>
-        </div>
+    <section class="hero">
+        <span class="eyebrow">Writing</span>
+        <h1>Ideas on design, security, systems, and the future of digital products.</h1>
+        <p>This section gives the portfolio more editorial weight. It shows how I think, what I notice, and how I connect user experience with infrastructure, security, and product direction.</p>
     </section>
 
-    <main class="container">
+    <main class="blog-wrap">
         <div class="blog-grid">
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art1.jpg" alt="Cyber Security 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #dcfce7; color: #166534;">Cyber Security</div>
-                    <h2>The Zero-Trust Interface: UI as a Security Layer</h2>
-                    <p>How Modern Biometrics and Quantum Encryption are redefining the front-end as an Active Defense System.</p>
-                    <a href="art1.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art2.jpg" alt="AI in UX Design 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #fce7f3; color: #9d174d;">UX Design</div>
-                    <h2>The End of Static UI: Generative User Experiences</h2>
-                    <p>In 2026, we’ve moved past fixed grids to 'Liquid UI'—interfaces that evolve in real-time based on user intent.</p>
-                    <a href="art2.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art3.jpg" alt="Java Renaissance 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #ffedd5; color: #9a3412;">Full-Stack</div>
-                    <h2>The 2026 Tech Stack: Java's Renaissance</h2>
-                    <p>Explore how Project Valhalla and AI-native infrastructure transformed Java into a high-scale web engine.</p>
-                    <a href="art3.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art4.jpg" alt="Quantum Computing 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #f3e8ff; color: #6b21a8;">Quantum</div>
-                    <h2>The Quantum Leap: Solving the Unsolvable</h2>
-                    <p>Discover how 2026's breakthrough in logical qubits and error correction is transforming the digital landscape.</p>
-                    <a href="art4.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art5.jpg" alt="Spatial Computing 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #d1fae5; color: #065f46;">Spatial Computing</div>
-                    <h2>Spatial Computing: The Convergence of Digital and Physical</h2>
-                    <p>Discover how 2026's breakthrough in SLAM mapping and hand-tracking is turning our world into an interactive canvas.</p>
-                    <a href="art5.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art6.jpg" alt="Hyperautomation 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #fef3c7; color: #92400e;">Hyperautomation</div>
-                    <h2>Hyperautomation: Beyond Simple Task Bots</h2>
-                    <p>Learn how the 2026 integration of AI, RPA, and Process Mining is creating the first generation of 'Autonomic Enterprises'.</p>
-                    <a href="art6.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art7.jpg" alt="AI Security 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #fee2e2; color: #991b1b;">Cyber Security</div>
-                    <h2>AI-Driven Zero Trust & CTEM: The Adaptive Defense</h2>
-                    <p>Explore the convergence of continuous exposure management and autonomous identity verification in the 2026 landscape.</p>
-                    <a href="art7.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art8.jpg" alt="Climate Tech 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #dcfce7; color: #15803d;">Climate Tech</div>
-                    <h2>Carbon-Aware Computing: Engineering a Greener Future</h2>
-                    <p>Learn how 2026 software architecture is shifting to align compute power with real-time renewable energy availability.</p>
-                    <a href="art8.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art9.jpg" alt="AI-Native Development 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #e0f2fe; color: #0369a1;">Dev Experience</div>
-                    <h2>AI-Native Dev Tools: Beyond the Autocomplete Era</h2>
-                    <p>Explore the shift from simple code assistants to fully agentic engineering workflows and self-healing codebases.</p>
-                    <a href="art9.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art10.jpg" alt="Vertical SaaS AI 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #fef3c7; color: #92400e;">Enterprise</div>
-                    <h2>Vertical SaaS + AI: The Deep-Sector OS</h2>
-                    <p>Why 2026 is the year of specialized, industry-specific software "Systems of Action" over horizontal giants.</p>
-                    <a href="art10.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art11.jpg" alt="Autonomous Apps 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #f3e8ff; color: #7e22ce;">Mobile</div>
-                    <h2>Autonomous & Super Apps: The De-Fragmented Life</h2>
-                    <p>The death of the App Store model and the rise of Large Action Models (LAMs) and unified digital operating systems.</p>
-                    <a href="art11.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art12.jpg" alt="Open-Source AI 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #e0f2fe; color: #0284c7;">Decentralized AI</div>
-                    <h2>Open-Source & On-Device GenAI: The Great Decentralization</h2>
-                    <p>Moving from massive server farms to local NPUs. Explore the 2026 shift toward digital sovereignty and offline intelligence.</p>
-                    <a href="art12.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art13.jpg" alt="CTEM Security 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #fee2e2; color: #991b1b;">Cyber Security</div>
-                    <h2>Beyond Pentesting: The Rise of CTEM</h2>
-                    <p>Why periodic audits are failing and how Continuous Threat Exposure Management provides 24/7 autonomous validation.</p>
-                    <a href="art13.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art14.jpg" alt="Machine Customers 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #ecfdf5; color: #065f46;">Commerce</div>
-                    <h2>The Rise of Machine Customers (Custobots)</h2>
-                    <p>When AI starts shopping: How 15 billion connected devices are becoming autonomous economic actors in 2026.</p>
-                    <a href="art14.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="art15.jpg" alt="Robotaxi Fleet 2026">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #ecfeff; color: #0891b2;">Mobility</div>
-                    <h2>The Grid Shift: Robotaxi & L4 Commercial Fleets</h2>
-                    <p>From experimental prototypes to urban utilities: How steering-wheel-less fleets are reclaiming city spaces in 2026.</p>
-                    <a href="art15.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
+            <article class="blog-card"><div class="image-wrapper"><img src="art1.jpg" alt="Cyber Security 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#dcfce7;color:#166534;">Cyber Security</div><h2>The Zero-Trust Interface</h2><p>How modern biometrics and quantum encryption reposition the front end as an active defense layer.</p><a href="art1.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art2.jpg" alt="AI in UX Design 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#fce7f3;color:#9d174d;">UX Design</div><h2>The End of Static UI</h2><p>Why interfaces are shifting from rigid layouts toward adaptive experiences shaped by intent.</p><a href="art2.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art3.jpg" alt="Java Renaissance 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#ffedd5;color:#9a3412;">Full-Stack</div><h2>Java's Renaissance</h2><p>An exploration of how AI-native infrastructure changed the shape of modern Java development.</p><a href="art3.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art4.jpg" alt="Quantum Computing 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#f3e8ff;color:#6b21a8;">Quantum</div><h2>The Quantum Leap</h2><p>Breakthroughs in logical qubits and error correction are starting to reshape digital capability.</p><a href="art4.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art5.jpg" alt="Spatial Computing 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#d1fae5;color:#065f46;">Spatial Computing</div><h2>Spatial Computing</h2><p>How hand-tracking and real-time mapping are blending digital interaction with physical space.</p><a href="art5.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art6.jpg" alt="Hyperautomation 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#fef3c7;color:#92400e;">Automation</div><h2>Beyond Simple Task Bots</h2><p>AI, RPA, and process mining are converging into more autonomous enterprise operations.</p><a href="art6.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art7.jpg" alt="AI Security 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#fee2e2;color:#991b1b;">Cyber Security</div><h2>AI-Driven Zero Trust</h2><p>The 2026 landscape is moving toward adaptive defense and continuous exposure management.</p><a href="art7.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art8.jpg" alt="Climate Tech 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#dcfce7;color:#15803d;">Climate Tech</div><h2>Carbon-Aware Computing</h2><p>Software architecture is beginning to align computation with renewable energy availability.</p><a href="art8.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art9.jpg" alt="AI-Native Development 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#e0f2fe;color:#0369a1;">Dev Experience</div><h2>AI-Native Dev Tools</h2><p>The move from autocomplete to agentic engineering workflows is changing developer expectations.</p><a href="art9.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art10.jpg" alt="Vertical SaaS AI 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#fef3c7;color:#92400e;">Enterprise</div><h2>Vertical SaaS + AI</h2><p>Specialised systems of action are outpacing horizontal platforms in high-value sectors.</p><a href="art10.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art11.jpg" alt="Autonomous Apps 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#f3e8ff;color:#7e22ce;">Mobile</div><h2>Autonomous & Super Apps</h2><p>Large action models and unified digital operating systems are redefining app behaviour.</p><a href="art11.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art12.jpg" alt="Open-Source AI 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#e0f2fe;color:#0284c7;">Decentralized AI</div><h2>On-Device GenAI</h2><p>Offline intelligence and local NPUs are pushing AI toward digital sovereignty.</p><a href="art12.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art13.jpg" alt="CTEM Security 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#fee2e2;color:#991b1b;">Cyber Security</div><h2>The Rise of CTEM</h2><p>Periodic pentests are giving way to continuous validation and exposure management.</p><a href="art13.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art14.jpg" alt="Machine Customers 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#ecfdf5;color:#065f46;">Commerce</div><h2>Machine Customers</h2><p>Connected devices are becoming autonomous economic actors in their own right.</p><a href="art14.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="blog-card"><div class="image-wrapper"><img src="art15.jpg" alt="Robotaxi Fleet 2026"></div><div class="blog-content"><div class="category-tag" style="background-color:#ecfeff;color:#0891b2;">Mobility</div><h2>The Grid Shift</h2><p>Robotaxi and commercial L4 fleets are moving from prototypes to city-scale utility.</p><a href="art15.html" class="read-more">Read Article &rarr;</a></div></article>
         </div>
     </main>
 
     <script type="text/javascript">
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,bg',
-                autoDisplay: false
-            }, 'google_translate_element');
-            
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,bg', autoDisplay: false }, 'google_translate_element');
             setTimeout(applySavedLanguage, 1000);
         }
-
         function toggleLanguage() {
             const currentLang = localStorage.getItem('preferredLang') || 'en';
-            const newLang = (currentLang === 'en') ? 'bg' : 'en';
-            changeLanguage(newLang);
+            changeLanguage(currentLang === 'en' ? 'bg' : 'en');
         }
-
         function changeLanguage(langCode) {
             const select = document.querySelector('.goog-te-combo');
             if (select) {
@@ -446,24 +158,20 @@
                 updateButtonText(langCode);
             }
         }
-
         function applySavedLanguage() {
             const savedLang = localStorage.getItem('preferredLang');
-            if (savedLang && savedLang !== 'en') {
-                changeLanguage(savedLang);
-            } else {
-                updateButtonText('en');
-            }
+            if (savedLang && savedLang !== 'en') changeLanguage(savedLang);
+            else updateButtonText('en');
         }
-
         function updateButtonText(lang) {
             const btn = document.getElementById('lang-text');
-            if(btn) {
-                btn.innerText = (lang === 'en') ? 'BG' : 'EN';
-            }
+            if (btn) btn.innerText = lang === 'en' ? 'BG' : 'EN';
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <script src="site-enhancements.js"></script>
 </body>
 </html>
+
+
+

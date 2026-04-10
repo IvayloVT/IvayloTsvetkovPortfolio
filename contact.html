@@ -1,231 +1,190 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Contact Ivaylo Tsvetkov for junior front-end roles, digital opportunities, portfolio conversations, and professional enquiries.">
+    <meta name="theme-color" content="#07111f">
+    <meta name="color-scheme" content="dark">
+    <meta property="og:title" content="Contact | Ivaylo Tsvetkov">
+    <meta property="og:description" content="Contact Ivaylo Tsvetkov for junior front-end roles, digital opportunities, portfolio conversations, and professional enquiries.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="ivaylo.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact | Ivaylo Tsvetkov">
+    <meta name="twitter:description" content="Contact Ivaylo Tsvetkov for junior front-end roles, digital opportunities, portfolio conversations, and professional enquiries.">
+    <meta name="twitter:image" content="ivaylo.jpg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="site-shell.css">
     <title>Contact | Ivaylo Tsvetkov</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Variables matched exactly to index.html */
-            --primary-blue: #3482f6;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --bg-light-blue: #f8fbff;
-            --border-color: #e2e8f0;
-            /* Colors for the Left Borders */
-            --gmail-red: #ea4335;
-            --linkedin-blue: #0077b5;
-            --github-black: #24292e;
-            --instagram-pink: #e4405f;
-            --android-green: #3DDC84;
+            --text: #eff6ff;
+            --muted: #a9bdd9;
+            --line: rgba(162, 188, 222, 0.18);
+            --panel: rgba(15, 28, 49, 0.82);
+            --panel-soft: rgba(255, 255, 255, 0.04);
+            --shadow: 0 22px 70px rgba(3, 10, 25, 0.45);
+            --gmail: #f87171;
+            --linkedin: #38bdf8;
+            --github: #e2e8f0;
+            --instagram: #f472b6;
+            --android: #4ade80;
         }
-
+        * { box-sizing: border-box; }
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: #ffffff;
-            line-height: 1.6;
-            top: 0 !important; /* Prevents layout shifting when translated */
+            font-family: 'Manrope', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 10% 0, rgba(56, 189, 248, 0.14), transparent 26%),
+                linear-gradient(180deg, #09111f 0%, #0b1526 100%);
+            top: 0 !important;
         }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* --- MOBILE FRIENDLY HEADER (Applied from index.html) --- */
+        .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
         .site-header {
-            padding: 24px 0;
-            background-color: var(--bg-light-blue);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(5, 11, 20, 0.72);
+            border-bottom: 1px solid var(--line);
         }
-
         .header-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* Matches index.html logic */
+            gap: 24px;
+            padding: 18px 0;
         }
-
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-            font-weight: 700;
-            color: var(--text-dark);
             text-decoration: none;
+            color: var(--text);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
         }
-
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 20px; /* Standardized gap from index.html */
+            align-items: center;
+            gap: 10px;
             margin: 0;
             padding: 0;
-            align-items: center;
             flex-wrap: wrap;
-            justify-content: flex-end;
         }
-
-        .nav-links a {
+        .nav-links a, .lang-switch {
             text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            font-weight: 500;
-            white-space: nowrap;
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 700;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            background: transparent;
+            transition: 0.25s ease;
         }
-
-        .nav-links a.active {
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--primary-blue);
-            padding-bottom: 4px;
+        .nav-links a:hover, .nav-links a.active, .lang-switch:hover {
+            color: var(--text);
+            border-color: var(--line);
+            background: rgba(125, 211, 252, 0.08);
         }
-
-        /* --- CUSTOM TRANSLATOR BUTTON --- */
-        .lang-switch {
-            background: white;
-            border: 1px solid #cbd5e1;
-            padding: 6px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            min-width: 50px;
-            justify-content: center;
-        }
-
-        .lang-switch:hover {
-            border-color: var(--primary-blue);
-            color: var(--primary-blue);
-        }
-
-        /* Hide the default Google Translate UI */
-        #google_translate_element, .goog-te-banner-frame, .skiptranslate {
-            display: none !important;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background-color: rgb(146, 193, 237);
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-        }
-
-        .hero-sub {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto; 
-        }
-
-        /* --- CONTACT CONTENT --- */
-        .contact-content {
-            padding: 80px 0;
-        }
-
-        .links-container {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .social-link-card {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background-color: white;
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--text-dark);
-            position: relative;
+        .lang-switch { cursor: pointer; font-family: inherit; }
+        #google_translate_element, .goog-te-banner-frame, .skiptranslate { display: none !important; }
+        .hero, .contact-card, .profile-card {
+            width: min(1180px, calc(100% - 40px));
+            margin: 36px auto 0;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
-
+        .hero { padding: 42px; }
+        .eyebrow {
+            display: inline-flex;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #d7f1ff;
+            background: rgba(125, 211, 252, 0.1);
+            border: 1px solid rgba(125, 211, 252, 0.16);
+        }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 5vw, 4.8rem);
+            line-height: 0.96;
+            margin: 18px 0 16px;
+        }
+        .hero p { max-width: 64ch; color: var(--muted); }
+        .profile-card,
+        .contact-card { padding: 28px; margin-bottom: 36px; }
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+        .profile-point {
+            padding: 20px;
+            border-radius: 20px;
+            background: var(--panel-soft);
+            border: 1px solid var(--line);
+        }
+        .profile-point strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .profile-point span {
+            color: var(--muted);
+        }
+        .links-container { display: grid; gap: 16px; }
+        .social-link-card {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 18px;
+            padding: 20px 22px;
+            background: var(--panel-soft);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text);
+            transition: 0.25s ease;
+        }
         .social-link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transform: translateY(-4px);
+            border-color: rgba(125, 211, 252, 0.3);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
         }
-
-        .social-link-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 8px;
-            border-radius: 12px 0 0 12px;
-        }
-
-        .social-link-card i {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            transition: color 0.3s ease;
-        }
-
-        .social-link-card span {
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-
-        .gmail::before { background-color: var(--gmail-red); }
-        .linkedin::before { background-color: var(--linkedin-blue); }
-        .github::before { background-color: var(--github-black); }
-        .instagram::before { background-color: var(--instagram-pink); }
-        .download-apk::before { background-color: var(--android-green); }
-
-        .gmail i { color: var(--gmail-red); }
-        .linkedin i { color: var(--linkedin-blue); }
-        .github i { color: var(--github-black); }
-        .instagram i { color: var(--instagram-pink); }
-        .download-apk i { color: var(--android-green); }
-
-        .social-link-card:hover i {
-            color: var(--primary-blue);
-        }
-
-        /* --- MOBILE MEDIA QUERIES (Updated from index.html) --- */
+        .social-link-card i { font-size: 1.4rem; }
+        .social-copy strong { display: block; margin-bottom: 2px; }
+        .social-copy span, .arrow { color: var(--muted); }
+        .gmail i { color: var(--gmail); }
+        .linkedin i { color: var(--linkedin); }
+        .github i { color: var(--github); }
+        .instagram i { color: var(--instagram); }
+        .download-apk i { color: var(--android); }
         @media (max-width: 768px) {
-            .header-flex {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            .nav-links {
-                justify-content: center;
-                gap: 12px;
-            }
-            .nav-links li:last-child {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                margin-top: 10px;
-            }
-            .hero h1 { font-size: 2.2rem; }
-            .links-container { max-width: 100%; }
+            .header-flex { flex-direction: column; align-items: flex-start; }
+            .nav-links li:last-child { width: 100%; }
+            .lang-switch { width: 100%; }
+            .hero, .profile-card, .contact-card { padding: 24px; }
+            .profile-grid { grid-template-columns: 1fr; }
+            .social-link-card { grid-template-columns: auto 1fr; }
+            .arrow { display: none; }
         }
     </style>
 </head>
 <body>
-
     <header class="site-header">
         <div class="container header-flex">
             <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
@@ -237,11 +196,7 @@
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="news.html">News</a></li>
                     <li><a href="contact.html" class="active">Contact</a></li>
-                    <li>
-                        <button class="lang-switch" onclick="toggleLanguage()">
-                            <span id="lang-text">BG</span>
-                        </button>
-                    </li>
+                    <li><button class="lang-switch" onclick="toggleLanguage()"><span id="lang-text">BG</span></button></li>
                 </ul>
             </nav>
         </div>
@@ -250,60 +205,67 @@
     <div id="google_translate_element"></div>
 
     <section class="hero">
-        <div class="container">
-            <h1>Let's Connect</h1>
-            <p class="hero-sub">I am always open to discussing new technical projects or architectural challenges. Let's build the digital defenses of tomorrow together.</p>
+        <span class="eyebrow">Contact</span>
+        <h1>Open to junior opportunities, freelance-style web work, and thoughtful collaboration.</h1>
+        <p>If you are hiring, reviewing portfolios, or want to discuss a digital project, this page is designed to make the next step simple. I am especially interested in front-end, web support, and technically aware digital roles.</p>
+    </section>
+
+    <section class="profile-card">
+        <div class="profile-grid">
+            <div class="profile-point">
+                <strong>Best fit</strong>
+                <span>Front-end, junior web, and digital roles where communication and technical thinking both matter.</span>
+            </div>
+            <div class="profile-point">
+                <strong>Working style</strong>
+                <span>Clear, reliable, and detail-focused with a strong interest in improving presentation and usability.</span>
+            </div>
+            <div class="profile-point">
+                <strong>Response preference</strong>
+                <span>Email or LinkedIn are the best routes for opportunities, project conversations, and introductions.</span>
+            </div>
         </div>
     </section>
 
-    <main class="container contact-content">
+    <main class="contact-card">
         <div class="links-container">
             <a href="mailto:ivaylovt@gmail.com" class="social-link-card gmail" title="Email Me">
                 <i class="fas fa-envelope"></i>
-                <span>Send an Email</span>
+                <div class="social-copy"><strong>Send an Email</strong><span>The best option for job opportunities, direct enquiries, and project conversations.</span></div>
+                <span class="arrow">Open</span>
             </a>
-
             <a href="https://www.linkedin.com/in/ivaylo-tsvetkov-576b6699/" target="_blank" class="social-link-card linkedin" title="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
-                <span>Connect on LinkedIn</span>
+                <div class="social-copy"><strong>Connect on LinkedIn</strong><span>Professional background, network, and an easy way to start a hiring conversation.</span></div>
+                <span class="arrow">Visit</span>
             </a>
-
             <a href="https://github.com/IvayloVT" target="_blank" class="social-link-card github" title="GitHub">
                 <i class="fab fa-github"></i>
-                <span>Follow on GitHub</span>
+                <div class="social-copy"><strong>Follow on GitHub</strong><span>Code samples, experiments, and a closer look at how I build.</span></div>
+                <span class="arrow">Visit</span>
             </a>
-
             <a href="https://www.instagram.com/ivaylo.tsvetkov.1/" target="_blank" class="social-link-card instagram" title="Instagram">
                 <i class="fab fa-instagram"></i>
-                <span>Follow on Instagram</span>
+                <div class="social-copy"><strong>Follow on Instagram</strong><span>Personal updates and visual moments outside the codebase.</span></div>
+                <span class="arrow">Visit</span>
             </a>
-
             <a href="app.apk" download="app.apk" class="social-link-card download-apk" title="Download APK">
                 <i class="fab fa-android"></i>
-                <span>Download Android App</span>
+                <div class="social-copy"><strong>Download Android App</strong><span>Try the mobile build directly from the portfolio.</span></div>
+                <span class="arrow">Download</span>
             </a>
         </div>
     </main>
 
     <script type="text/javascript">
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,bg',
-                autoDisplay: false
-            }, 'google_translate_element');
-            
-            // Check for saved preference on load
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,bg', autoDisplay: false }, 'google_translate_element');
             setTimeout(applySavedLanguage, 1000);
         }
-
         function toggleLanguage() {
             const currentLang = localStorage.getItem('preferredLang') || 'en';
-            const newLang = (currentLang === 'en') ? 'bg' : 'en';
-            
-            changeLanguage(newLang);
+            changeLanguage(currentLang === 'en' ? 'bg' : 'en');
         }
-
         function changeLanguage(langCode) {
             const select = document.querySelector('.goog-te-combo');
             if (select) {
@@ -313,24 +275,20 @@
                 updateButtonText(langCode);
             }
         }
-
         function applySavedLanguage() {
             const savedLang = localStorage.getItem('preferredLang');
-            if (savedLang && savedLang !== 'en') {
-                changeLanguage(savedLang);
-            } else {
-                updateButtonText('en');
-            }
+            if (savedLang && savedLang !== 'en') changeLanguage(savedLang);
+            else updateButtonText('en');
         }
-
         function updateButtonText(lang) {
             const btn = document.getElementById('lang-text');
-            if(btn) {
-                btn.innerText = (lang === 'en') ? 'BG' : 'EN';
-            }
+            if (btn) btn.innerText = lang === 'en' ? 'BG' : 'EN';
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <script src="site-enhancements.js"></script>
 </body>
 </html>
+
+
+
