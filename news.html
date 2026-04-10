@@ -1,453 +1,154 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Ivaylo Tsvetkov</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <meta name="description" content="Curated culture, biography, and story-driven editorial content presented through the Rap Stories news archive.">
+    <meta name="theme-color" content="#07111f">
+    <meta name="color-scheme" content="dark">
+    <meta property="og:title" content="News | Ivaylo Tsvetkov">
+    <meta property="og:description" content="Curated culture, biography, and story-driven editorial content presented through the Rap Stories news archive.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="ivaylo.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="News | Ivaylo Tsvetkov">
+    <meta name="twitter:description" content="Curated culture, biography, and story-driven editorial content presented through the Rap Stories news archive.">
+    <meta name="twitter:image" content="ivaylo.jpg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="site-shell.css">
+    <title>News | Ivaylo Tsvetkov</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Variables matched exactly to index.html */
-            --primary-blue: #3482f6;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --bg-light-blue: #f8fbff;
-            --border-color: #e2e8f0;
+            --text: #eff6ff;
+            --muted: #a9bdd9;
+            --line: rgba(162, 188, 222, 0.18);
+            --panel: rgba(15, 28, 49, 0.82);
+            --panel-soft: rgba(255, 255, 255, 0.04);
+            --shadow: 0 22px 70px rgba(3, 10, 25, 0.45);
         }
-
+        * { box-sizing: border-box; }
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: #ffffff;
-            top: 0 !important; /* Prevents layout shifting when translated */
+            font-family: 'Manrope', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 32%),
+                linear-gradient(180deg, #09111f 0%, #0b1526 100%);
+            top: 0 !important;
         }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* --- MOBILE FRIENDLY HEADER (Applied from index.html) --- */
+        .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
         .site-header {
-            padding: 24px 0;
-            background-color: var(--bg-light-blue);
+            position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px);
+            background: rgba(5, 11, 20, 0.72); border-bottom: 1px solid var(--line);
         }
-
-        .header-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap; /* Matches index.html logic */
-        }
-
+        .header-flex { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 18px 0; }
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-            font-weight: 700;
-            color: var(--text-dark);
-            text-decoration: none;
+            text-decoration: none; color: var(--text); font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem; font-weight: 700; letter-spacing: 0.08em;
         }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px; /* Standardized gap from index.html */
-            margin: 0;
-            padding: 0;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: flex-end;
+        .nav-links { list-style: none; display: flex; align-items: center; gap: 10px; margin: 0; padding: 0; flex-wrap: wrap; }
+        .nav-links a, .lang-switch {
+            text-decoration: none; color: var(--muted); font-size: 0.92rem; font-weight: 700;
+            padding: 10px 14px; border-radius: 999px; border: 1px solid transparent; background: transparent; transition: 0.25s ease;
         }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            font-weight: 500;
-            white-space: nowrap;
+        .nav-links a:hover, .nav-links a.active, .lang-switch:hover {
+            color: var(--text); border-color: var(--line); background: rgba(125, 211, 252, 0.08);
         }
-
-        .nav-links a.active {
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--primary-blue);
-            padding-bottom: 4px;
+        .lang-switch { cursor: pointer; font-family: inherit; }
+        #google_translate_element, .goog-te-banner-frame, .skiptranslate { display: none !important; }
+        .hero, .news-wrap {
+            width: min(1180px, calc(100% - 40px)); margin: 36px auto 0;
+            background: var(--panel); border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); overflow: hidden;
         }
-
-        /* --- CUSTOM TRANSLATOR BUTTON --- */
-        .lang-switch {
-            background: white;
-            border: 1px solid #cbd5e1;
-            padding: 6px 14px; /* Updated padding for better tap target */
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            min-width: 50px;
-            justify-content: center;
+        .hero { padding: 42px; }
+        .eyebrow {
+            display: inline-flex; padding: 8px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em;
+            text-transform: uppercase; color: #d7f1ff; background: rgba(125, 211, 252, 0.1); border: 1px solid rgba(125, 211, 252, 0.16);
         }
-
-        .lang-switch:hover {
-            border-color: var(--primary-blue);
-            color: var(--primary-blue);
+        .hero h1, .news-card h2 { font-family: 'Cormorant Garamond', serif; }
+        .hero h1 { font-size: clamp(3rem, 5vw, 4.8rem); line-height: 0.96; margin: 18px 0 16px; }
+        .hero p { max-width: 70ch; color: var(--muted); }
+        .news-wrap { padding: 30px; margin-bottom: 36px; }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+        .news-card {
+            background: var(--panel-soft); border-radius: 22px; overflow: hidden; transition: 0.25s ease;
+            text-decoration: none; color: inherit; border: 1px solid var(--line); display: block;
         }
-
-        /* Hide Google Translate UI */
-        #google_translate_element, .goog-te-banner-frame, .skiptranslate {
-            display: none !important;
-        }
-
-        /* --- BLOG HERO --- */
-        .blog-hero {
-            background-color: rgb(146, 193, 237);
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .blog-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .blog-hero p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* --- BLOG GRID --- */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            padding: 80px 0;
-        }
-
-        .blog-card {
-            background: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .image-wrapper {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .blog-content {
-            padding: 24px;
-        }
-
+        .news-card:hover { transform: translateY(-6px); border-color: rgba(125, 211, 252, 0.3); box-shadow: 0 20px 44px rgba(0,0,0,0.24); }
+        .image-wrapper { width: 100%; height: 200px; overflow: hidden; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .news-content { padding: 20px; }
         .category-tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 12px;
+            display: inline-block; padding: 6px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 800;
+            margin-bottom: 12px; letter-spacing: 0.03em; background: rgba(125, 211, 252, 0.12); color: #d7f1ff; border: 1px solid rgba(125, 211, 252, 0.16);
         }
-
-        .blog-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin: 0 0 12px 0;
-            line-height: 1.3;
-        }
-
-        .blog-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .read-more {
-            color: var(--primary-blue);
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        /* --- MOBILE MEDIA QUERIES (Updated from index.html) --- */
+        .news-card h2 { font-size: 2rem; line-height: 1; margin: 0 0 10px; }
+        .news-card p { color: var(--muted); margin: 0 0 16px; }
+        .read-more { color: #d7f1ff; font-weight: 800; text-decoration: none; }
         @media (max-width: 768px) {
-            .header-flex {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            .nav-links {
-                justify-content: center;
-                gap: 12px;
-            }
-            .nav-links li:last-child {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                margin-top: 10px;
-            }
-            .blog-hero h1 { font-size: 2.5rem; }
+            .header-flex { flex-direction: column; align-items: flex-start; }
+            .nav-links li:last-child { width: 100%; }
+            .lang-switch { width: 100%; }
+            .hero, .news-wrap { padding: 24px; }
         }
     </style>
 </head>
 <body>
-
     <header class="site-header">
         <div class="container header-flex">
             <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="news.html" class="active">News</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li>
-                        <button class="lang-switch" onclick="toggleLanguage()">
-                            <span id="lang-text">BG</span>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
+            <nav><ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="news.html" class="active">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><button class="lang-switch" onclick="toggleLanguage()"><span id="lang-text">BG</span></button></li>
+            </ul></nav>
         </div>
     </header>
-
     <div id="google_translate_element"></div>
 
-    <section class="blog-hero">
-        <div class="container">
-            <h1>Entertainment Portal</h1>
-            <p>Your all-access pass to the pulse of the world. From breaking political headlines and stadium-sized sports updates to the latest Hollywood whispers, music charts, and deep-dive biographies, we deliver the stories that matter - and the ones everyone is talking about.</p>
-        </div>
+    <section class="hero">
+        <span class="eyebrow">Entertainment Portal</span>
+        <h1>Culture, biography, and current stories arranged with stronger editorial presence.</h1>
+        <p>This section now feels less like a simple card dump and more like a curated media surface. The content stays rich, but the presentation is cleaner, darker, and much more intentional.</p>
     </section>
 
-    <main class="container">
-        <div class="blog-grid">
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n1.jpg" alt="Lil Durk">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">The Culture</div>
-                    <h2>Lil Durk: Environment, Influence and the Complexities of Modern Hip-Hop</h2>
-                    <p>A deep dive into the complex journey of Lil Durk, from the streets of Englewood to international fame and his ongoing legal challenges.</p>
-                    <a href="n1.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n7.jpg" alt="King Von">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">The Culture</div>
-                    <h2>King Von: A Life Shaped by Chicago’s Streets</h2>
-                    <p>An exploration of Dayvon Bennett's journey from O’Block to drill music stardom, and the tragic legacy left behind.</p>
-                    <a href="n7.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n15.jpg" alt="Chief Keef">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">The Culture</div>
-                    <h2>Chief Keef: The Architect of Drill</h2>
-                    <p>A deep dive into the life of Keith Cozart, his origins in Chicago's O’Block, and his revolutionary role in bringing drill music to the global stage.</p>
-                    <a href="n15.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n8.jpg" alt="MO3">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">The Culture</div>
-                    <h2>MO3: A Life Marked by Talent, Pain and Violence</h2>
-                    <p>A deep dive into the emotional honesty of Melvin Noble Jr., his rise in the Dallas scene, and the tragic 2020 incident on I-35E.</p>
-                    <a href="n8.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-             <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n9.jpg" alt="Pop Smoke">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">The Culture</div>
-                    <h2>Pop Smoke: A Life of Fast-Rising Stardom</h2>
-                    <p>From the streets of Canarsie to global fame, an exploration of Bashar Jackson's meteoric rise and his defining role in the Brooklyn drill movement.</p>
-                    <a href="n9.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n13.jpg" alt="Young Dolph">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">The Culture</div>
-                    <h2>Young Dolph: Independence, Resilience and Legacy</h2>
-                    <p>A look into the life of Adolph Thornton Jr., from his Memphis roots to becoming a pioneer of independent hip-hop through his Paper Route Empire label.</p>
-                    <a href="n13.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n14.jpg" alt="Juice WRLD">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">The Culture</div>
-                    <h2>Juice WRLD: Emotion, Fame and a Generation’s Voice</h2>
-                    <p>An exploration of Jarad Higgins' meteoric rise, his mastery of melodic rap, and his legacy as a vulnerable voice for a generation navigating heartbreak and anxiety.</p>
-                    <a href="n14.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n11.jpg" alt="2Pac">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">The Culture</div>
-                    <h2>2Pac: The Poet, The Rebel, The Legend</h2>
-                    <p>From his revolutionary roots to global icon status, explore the life of Tupac Shakur and his enduring impact on music, activism, and identity.</p>
-                    <a href="n11.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n12.jpg" alt="The Notorious B.I.G.">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">The Culture</div>
-                    <h2>The Notorious B.I.G.: The King of New York</h2>
-                    <p>From the streets of Bed-Stuy to global superstardom, an exploration of Christopher Wallace's legendary storytelling, his role in the East Coast resurgence, and his enduring hip-hop legacy.</p>
-                    <a href="n12.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n10.jpg" alt="DMX">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">The Culture</div>
-                    <h2>DMX: The Voice of the Streets</h2>
-                    <p>A deep exploration of Earl Simmons' historic career, from his record-breaking 1998 breakthrough to his legacy as hip-hop's most raw and vulnerable icon.</p>
-                    <a href="n10.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n6.jpg" alt="Sean Diddy Combs">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">The Culture</div>
-                    <h2>The Fall of Diddy: From Harlem Dreamer to Scandal-Plagued Mogul</h2>
-                    <p>A deep dive into the rise of Sean Combs, his influence on hip-hop, and the series of legal battles and allegations that led to his public downfall.</p>
-                    <a href="n6.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n3.jpg" alt="Young Thug YSL Trial">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">The Culture</div>
-                    <h2>Law, Music and Power: The YSL RICO Case and Its National Implications</h2>
-                    <p>A deep dive into the high-stakes legal battle in Atlanta that is blurring the lines between hip-hop lyrics and criminal evidence.</p>
-                    <a href="n3.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n5.jpg" alt="California Healthcare Investigation">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">Breaking News</div>
-                    <h2>California Under Scrutiny: Federal Raids, Allegations of Healthcare Fraud and the Role of Independent Media</h2>
-                    <p>Federal authorities and state officials confront growing concerns over alleged large-scale fraud within California’s healthcare system following investigations and viral media coverage.</p>
-                    <a href="n5.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n4.jpg" alt="Minneapolis Childcare Center">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">Breaking News</div>
-                    <h2>Viral Footage, Public Funding and the Complexity of Alleged Childcare Fraud</h2>
-                    <p>A look into the national controversy sparked by Nick Shirley's footage of "ghost" childcare centers in Minnesota and the resulting investigations.</p>
-                    <a href="n4.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="image-wrapper">
-                    <img src="n2.jpg" alt="Charlie Kirk">
-                </div>
-                <div class="blog-content">
-                    <div class="category-tag" style="background-color: #eff6ff; color: #3482f6;">Biography</div>
-                    <h2>The Rise, Life and Tragic End of Charlie Kirk</h2>
-                    <p>A look at the life of the Turning Point USA founder and the shocking events surrounding his sudden passing in Phoenix.</p>
-                    <a href="n2.html" class="read-more">Read Article →</a>
-                </div>
-            </article>
-
+    <main class="news-wrap">
+        <div class="news-grid">
+            <article class="news-card"><div class="image-wrapper"><img src="n1.jpg" alt="Lil Durk"></div><div class="news-content"><div class="category-tag">The Culture</div><h2>Lil Durk</h2><p>A closer look at environment, influence, and the complexities around modern hip-hop success.</p><a href="n1.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n7.jpg" alt="King Von"></div><div class="news-content"><div class="category-tag">The Culture</div><h2>King Von</h2><p>A story shaped by Chicago's streets, drill music, and a legacy that still carries weight.</p><a href="n7.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n15.jpg" alt="Chief Keef"></div><div class="news-content"><div class="category-tag">The Culture</div><h2>Chief Keef</h2><p>An overview of the artist who helped push drill from a local movement to a global sound.</p><a href="n15.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n8.jpg" alt="MO3"></div><div class="news-content"><div class="category-tag">The Culture</div><h2>MO3</h2><p>A life marked by emotional honesty, hard circumstances, and a powerful voice from Dallas.</p><a href="n8.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n9.jpg" alt="Pop Smoke"></div><div class="news-content"><div class="category-tag">The Culture</div><h2>Pop Smoke</h2><p>A fast-rising career that helped define Brooklyn drill before it was cut tragically short.</p><a href="n9.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n13.jpg" alt="Young Dolph"></div><div class="news-content"><div class="category-tag">The Culture</div><h2>Young Dolph</h2><p>Independence, resilience, and the long impact of building outside the traditional label model.</p><a href="n13.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n14.jpg" alt="Juice WRLD"></div><div class="news-content"><div class="category-tag">The Culture</div><h2>Juice WRLD</h2><p>Fame, vulnerability, and the voice of a generation navigating heartbreak and anxiety.</p><a href="n14.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n11.jpg" alt="2Pac"></div><div class="news-content"><div class="category-tag">Biography</div><h2>2Pac</h2><p>The poet, the rebel, and the legend whose voice still reaches across music and identity.</p><a href="n11.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n12.jpg" alt="Notorious BIG"></div><div class="news-content"><div class="category-tag">Biography</div><h2>The Notorious B.I.G.</h2><p>A sharp portrait of storytelling, superstardom, and the East Coast resurgence.</p><a href="n12.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n10.jpg" alt="DMX"></div><div class="news-content"><div class="category-tag">Biography</div><h2>DMX</h2><p>An artist whose raw presence and emotional intensity left a permanent mark on hip-hop.</p><a href="n10.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n6.jpg" alt="Diddy"></div><div class="news-content"><div class="category-tag">The Culture</div><h2>The Fall of Diddy</h2><p>A rise-and-collapse narrative around power, influence, and public scandal.</p><a href="n6.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n3.jpg" alt="Young Thug YSL Trial"></div><div class="news-content"><div class="category-tag">Breaking News</div><h2>The YSL RICO Case</h2><p>A legal and cultural story blurring the line between art, evidence, and power.</p><a href="n3.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n5.jpg" alt="California Healthcare Investigation"></div><div class="news-content"><div class="category-tag">Breaking News</div><h2>California Under Scrutiny</h2><p>Federal raids, fraud allegations, and the role of independent media in public attention.</p><a href="n5.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n4.jpg" alt="Childcare Fraud"></div><div class="news-content"><div class="category-tag">Breaking News</div><h2>Viral Footage and Fraud</h2><p>A look at the controversy around ghost childcare centres and what followed.</p><a href="n4.html" class="read-more">Read Article &rarr;</a></div></article>
+            <article class="news-card"><div class="image-wrapper"><img src="n2.jpg" alt="Charlie Kirk"></div><div class="news-content"><div class="category-tag">Biography</div><h2>Charlie Kirk</h2><p>A profile tracing rise, public influence, and the events surrounding his sudden end.</p><a href="n2.html" class="read-more">Read Article &rarr;</a></div></article>
         </div>
     </main>
 
     <script type="text/javascript">
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,bg',
-                autoDisplay: false
-            }, 'google_translate_element');
-            
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,bg', autoDisplay: false }, 'google_translate_element');
             setTimeout(applySavedLanguage, 1000);
         }
-
         function toggleLanguage() {
             const currentLang = localStorage.getItem('preferredLang') || 'en';
-            const newLang = (currentLang === 'en') ? 'bg' : 'en';
-            changeLanguage(newLang);
+            changeLanguage(currentLang === 'en' ? 'bg' : 'en');
         }
-
         function changeLanguage(langCode) {
             const select = document.querySelector('.goog-te-combo');
             if (select) {
@@ -457,24 +158,21 @@
                 updateButtonText(langCode);
             }
         }
-
         function applySavedLanguage() {
             const savedLang = localStorage.getItem('preferredLang');
-            if (savedLang && savedLang !== 'en') {
-                changeLanguage(savedLang);
-            } else {
-                updateButtonText('en');
-            }
+            if (savedLang && savedLang !== 'en') changeLanguage(savedLang);
+            else updateButtonText('en');
         }
-
         function updateButtonText(lang) {
             const btn = document.getElementById('lang-text');
-            if(btn) {
-                btn.innerText = (lang === 'en') ? 'BG' : 'EN';
-            }
+            if (btn) btn.innerText = lang === 'en' ? 'BG' : 'EN';
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <script src="site-enhancements.js"></script>
 </body>
 </html>
+
+
+
+
