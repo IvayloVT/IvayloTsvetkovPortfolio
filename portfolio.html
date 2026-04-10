@@ -1,191 +1,203 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Explore case studies and project work from Ivaylo Tsvetkov across front-end delivery, audits, security thinking, and technical execution.">
+    <meta name="theme-color" content="#07111f">
+    <meta name="color-scheme" content="dark">
+    <meta property="og:title" content="Portfolio | Ivaylo Tsvetkov">
+    <meta property="og:description" content="Explore case studies and project work from Ivaylo Tsvetkov across front-end delivery, audits, security thinking, and technical execution.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="ivaylo.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio | Ivaylo Tsvetkov">
+    <meta name="twitter:description" content="Explore case studies and project work from Ivaylo Tsvetkov across front-end delivery, audits, security thinking, and technical execution.">
+    <meta name="twitter:image" content="ivaylo.jpg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="site-shell.css">
     <title>Portfolio | Ivaylo Tsvetkov</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #3482f6;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --bg-light-blue: #f8fbff;
-            --border-color: #e2e8f0;
+            --text: #eff6ff;
+            --muted: #a9bdd9;
+            --line: rgba(162, 188, 222, 0.18);
+            --panel: rgba(15, 28, 49, 0.82);
+            --panel-soft: rgba(255, 255, 255, 0.04);
+            --shadow: 0 22px 70px rgba(3, 10, 25, 0.45);
         }
-
+        * { box-sizing: border-box; }
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: #ffffff;
+            font-family: 'Manrope', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 32%),
+                linear-gradient(180deg, #09111f 0%, #0b1526 100%);
             top: 0 !important;
         }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
+        .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
         .site-header {
-            padding: 24px 0;
-            background-color: var(--bg-light-blue);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(5, 11, 20, 0.72);
+            border-bottom: 1px solid var(--line);
         }
-
         .header-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            gap: 24px;
+            padding: 18px 0;
         }
-
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-            font-weight: 700;
-            color: var(--text-dark);
             text-decoration: none;
+            color: var(--text);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
         }
-
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 20px;
+            align-items: center;
+            gap: 10px;
             margin: 0;
             padding: 0;
-            align-items: center;
             flex-wrap: wrap;
-            justify-content: flex-end;
         }
-
-        .nav-links a {
+        .nav-links a, .lang-switch {
             text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            font-weight: 500;
-            white-space: nowrap;
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 700;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            background: transparent;
+            transition: 0.25s ease;
         }
-
-        .nav-links a.active {
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--primary-blue);
-            padding-bottom: 4px;
+        .nav-links a:hover, .nav-links a.active, .lang-switch:hover {
+            color: var(--text);
+            border-color: var(--line);
+            background: rgba(125, 211, 252, 0.08);
         }
-
-        .lang-switch {
-            background: white;
-            border: 1px solid #cbd5e1;
-            padding: 6px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
+        .lang-switch { cursor: pointer; font-family: inherit; }
+        #google_translate_element, .goog-te-banner-frame, .skiptranslate { display: none !important; }
+        .hero, .portfolio-wrap {
+            width: min(1180px, calc(100% - 40px));
+            margin: 36px auto 0;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .hero { padding: 42px; }
+        .eyebrow {
+            display: inline-flex;
+            padding: 8px 14px;
+            border-radius: 999px;
             font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            min-width: 50px;
-            justify-content: center;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #d7f1ff;
+            background: rgba(125, 211, 252, 0.1);
+            border: 1px solid rgba(125, 211, 252, 0.16);
         }
-
-        #google_translate_element, .goog-te-banner-frame, .skiptranslate {
-            display: none !important;
+        .hero h1, .project-info h2 { font-family: 'Cormorant Garamond', serif; }
+        .hero h1 {
+            font-size: clamp(3rem, 4.8vw, 4.45rem);
+            line-height: 0.94;
+            margin: 18px 0 14px;
         }
-
-        .portfolio-hero {
-            background-color: rgb(146, 193, 237);
-            padding: 80px 0;
-            text-align: center;
+        .hero p { max-width: 62ch; color: var(--muted); font-size: 1.02rem; line-height: 1.76; }
+        .portfolio-wrap { padding: 30px; margin-bottom: 36px; }
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin: 0 0 28px;
         }
-
-        .portfolio-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--text-dark);
+        .proof-card {
+            padding: 18px;
+            border-radius: 20px;
+            background: var(--panel-soft);
+            border: 1px solid var(--line);
         }
-
-        .portfolio-hero p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
+        .proof-card strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
         }
-
+        .proof-card span {
+            color: var(--muted);
+            font-size: 0.94rem;
+            line-height: 1.68;
+        }
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            padding: 80px 0;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 22px;
         }
-
         .project-card {
             text-decoration: none;
             color: inherit;
             display: block;
-            transition: transform 0.4s ease;
+            padding: 20px;
+            border-radius: 22px;
+            background: var(--panel-soft);
+            border: 1px solid var(--line);
+            transition: 0.25s ease;
         }
-
-        .project-card:hover { 
-            transform: translateY(-10px); 
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(125, 211, 252, 0.3);
+            box-shadow: 0 20px 44px rgba(0,0,0,0.24);
         }
-
         .image-wrapper {
             width: 100%;
-            height: 250px;
+            height: 230px;
+            border-radius: 18px;
             overflow: hidden;
-            border-radius: 8px;
-            background-color: #f3f4f6;
+            background: #0b1220;
         }
-
-        .image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .project-info h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin: 10px 0;
-        }
-
-        .project-info p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        /* --- UPDATED TAG STYLES --- */
-        .tags {
-            display: flex;
-            gap: 8px;
-            margin-top: 20px; /* This creates the gap between photo and tag */
-            margin-bottom: 12px;
-        }
-
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .tags { margin: 18px 0 10px; }
         .tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            display: inline-flex;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #d7f1ff;
+            background: rgba(125, 211, 252, 0.12);
+            border: 1px solid rgba(125, 211, 252, 0.16);
         }
-
+        .project-info h2 {
+            margin: 0 0 8px;
+            font-size: 1.82rem;
+            line-height: 0.98;
+        }
+        .project-info p { color: var(--muted); margin: 0; line-height: 1.68; }
         @media (max-width: 768px) {
-            .header-flex { flex-direction: column; gap: 15px; text-align: center; }
-            .nav-links { justify-content: center; gap: 12px; }
-            .nav-links li:last-child { width: 100%; display: flex; justify-content: center; margin-top: 10px; }
-            .portfolio-hero h1 { font-size: 2.5rem; }
+            .header-flex { flex-direction: column; align-items: flex-start; }
+            .nav-links li:last-child { width: 100%; }
+            .lang-switch { width: 100%; }
+            .hero, .portfolio-wrap { padding: 24px; }
+            .proof-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-
     <header class="site-header">
         <div class="container header-flex">
             <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
@@ -197,11 +209,7 @@
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="news.html">News</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li>
-                        <button class="lang-switch" onclick="toggleLanguage()">
-                            <span id="lang-text">BG</span>
-                        </button>
-                    </li>
+                    <li><button class="lang-switch" onclick="toggleLanguage()"><span id="lang-text">BG</span></button></li>
                 </ul>
             </nav>
         </div>
@@ -209,56 +217,66 @@
 
     <div id="google_translate_element"></div>
 
-    <section class="portfolio-hero">
-        <div class="container">
-            <h1>Building Resilient and Intelligent Digital Systems</h1>
-            <p>Combining structured <strong>Project Management</strong> with <strong>Network & Security</strong> ensures digital infrastructures are both efficient and resilient. By integrating <strong>Scripting & Web Technology</strong>, these systems become automated and optimized for high-performance user experiences. This approach delivers technical projects that are strategically sound and technologically advanced.</p>
-        </div>
+    <section class="hero">
+        <span class="eyebrow">Selected Work</span>
+        <h1>Project work presented with clearer role, value, and technical intent.</h1>
+        <p>This page is built to show how I think, not just what I submitted. Each project has been reframed as a case study so the work reads more like professional capability in front-end delivery, technical analysis, and problem solving.</p>
     </section>
 
-    <main class="container">
+    <main class="portfolio-wrap">
+        <div class="proof-grid">
+            <div class="proof-card">
+                <strong>How I frame projects</strong>
+                <span>Challenge, approach, and outcome are highlighted so the work feels easier to assess quickly.</span>
+            </div>
+            <div class="proof-card">
+                <strong>What the projects show</strong>
+                <span>UI thinking, audit skills, network awareness, and structured delivery across different technical contexts.</span>
+            </div>
+            <div class="proof-card">
+                <strong>Why this matters</strong>
+                <span>Recruiters and collaborators can scan the portfolio faster and understand where I could add value.</span>
+            </div>
+        </div>
         <div class="portfolio-grid">
             <a href="p1.html" class="project-card">
                 <div class="image-wrapper"><img src="port1.jpg" alt="NHS Project"></div>
                 <div class="project-info">
-                    <div class="tags"><span class="tag" style="background-color: #ffedd5; color: #9a3412;">Project Management</span></div>
-                    <h2>Development of a Structured NHS Patient Logbook Application</h2>
-                    <p>A comprehensive end-to-end project lifecycle analysis, focusing on resource allocation and risk mitigation.</p>
+                    <div class="tags"><span class="tag">Project Management</span></div>
+                    <h2>NHS Patient Logbook Application</h2>
+                    <p>A planning-focused case study that shows how I think about delivery structure, risk, and stakeholder-sensitive digital work.</p>
                 </div>
             </a>
-
             <a href="p2.html" class="project-card">
                 <div class="image-wrapper"><img src="port2.jpg" alt="Network Analysis"></div>
                 <div class="project-info">
-                    <div class="tags"><span class="tag" style="background-color: #dcfce7; color: #166534;">Network & Security</span></div>
-                    <h2>Network Analysis Report: Wireshark & Packet Tracer</h2>
-                    <p>Technical deep-dive into network architecture and security. Leveraged Wireshark for real-time traffic analysis.</p>
+                    <div class="tags"><span class="tag">Network & Security</span></div>
+                    <h2>Wireshark & Packet Tracer Analysis</h2>
+                    <p>A technical case study focused on traffic visibility, network modelling, and evidence-led security reasoning.</p>
                 </div>
             </a>
-
             <a href="p3.html" class="project-card">
                 <div class="image-wrapper"><img src="port3.jpg" alt="Pizza UNO Analysis"></div>
                 <div class="project-info">
-                    <div class="tags"><span class="tag" style="background-color: #e0f2fe; color: #0369a1;">Scripting & Web Technologies</span></div>
-                    <h2>Detailed Analysis of the Pizza UNO Sunderland Website</h2>
-                    <p>A detailed breakdown of Pizza UNO Sunderland website’s architecture to identify and resolve performance criticalities.</p>
+                    <div class="tags"><span class="tag">Web Audit</span></div>
+                    <h2>Pizza UNO Website Audit</h2>
+                    <p>An audit-led review that identifies usability friction, structural issues, and a more credible path to improvement.</p>
                 </div>
             </a>
-
             <a href="p4.html" class="project-card">
                 <div class="image-wrapper"><img src="port4.jpg" alt="Implementation"></div>
                 <div class="project-info">
-                    <div class="tags"><span class="tag" style="background-color: #e0f2fe; color: #0369a1;">Scripting & Web Technologies</span></div>
-                    <h2>Pizza Uno Analysis: Web Development & Implementation</h2>
-                    <p>Developed a new, optimized web platform for Pizza UNO Sunderland, transforming a legacy architecture.</p>
+                    <div class="tags"><span class="tag">Web Implementation</span></div>
+                    <h2>Pizza UNO Rebuild & Delivery</h2>
+                    <p>A rebuilt customer-facing experience focused on clearer navigation, stronger conversion flow, and cleaner front-end execution.</p>
                 </div>
             </a>
             <a href="intro.html" class="project-card">
-                <div class="image-wrapper"><img src="rs.jpg" alt="Pizza UNO Analysis"></div>
+                <div class="image-wrapper"><img src="rs.jpg" alt="Rap Stories"></div>
                 <div class="project-info">
-                    <div class="tags"><span class="tag" style="background-color: #e0f2fe; color: #0369a1;">Scripting & Web Technologies</span></div>
-                    <h2>Rap Stories: The Digital Vault of Hip-Hop History</h2>
-                    <p>A premium vault of hip-hop stories, connecting artists, timelines, and culture in one immersive experience.</p>
+                    <div class="tags"><span class="tag">Digital Product</span></div>
+                    <h2>Rap Stories</h2>
+                    <p>An editorial-style content experience that shows branding, layout direction, and immersive front-end presentation.</p>
                 </div>
             </a>
         </div>
@@ -266,21 +284,13 @@
 
     <script type="text/javascript">
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,bg',
-                autoDisplay: false
-            }, 'google_translate_element');
-            
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,bg', autoDisplay: false }, 'google_translate_element');
             setTimeout(applySavedLanguage, 1000);
         }
-
         function toggleLanguage() {
             const currentLang = localStorage.getItem('preferredLang') || 'en';
-            const newLang = (currentLang === 'en') ? 'bg' : 'en';
-            changeLanguage(newLang);
+            changeLanguage(currentLang === 'en' ? 'bg' : 'en');
         }
-
         function changeLanguage(langCode) {
             const select = document.querySelector('.goog-te-combo');
             if (select) {
@@ -290,24 +300,20 @@
                 updateButtonText(langCode);
             }
         }
-
         function applySavedLanguage() {
             const savedLang = localStorage.getItem('preferredLang');
-            if (savedLang && savedLang !== 'en') {
-                changeLanguage(savedLang);
-            } else {
-                updateButtonText('en');
-            }
+            if (savedLang && savedLang !== 'en') changeLanguage(savedLang);
+            else updateButtonText('en');
         }
-
         function updateButtonText(lang) {
             const btn = document.getElementById('lang-text');
-            if(btn) {
-                btn.innerText = (lang === 'en') ? 'BG' : 'EN';
-            }
+            if (btn) btn.innerText = lang === 'en' ? 'BG' : 'EN';
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <script src="site-enhancements.js"></script>
 </body>
 </html>
+
+
+
