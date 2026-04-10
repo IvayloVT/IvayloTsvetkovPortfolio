@@ -81,7 +81,9 @@
         node.style.transitionDelay = Math.min(index % 6, 5) * 60 + "ms";
     });
 
-    if ("IntersectionObserver" in window && body.classList.contains("motion-safe")) {
+    var disableRevealOnSmallScreens = window.matchMedia("(max-width: 768px)").matches;
+
+    if ("IntersectionObserver" in window && body.classList.contains("motion-safe") && !disableRevealOnSmallScreens) {
         var observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
