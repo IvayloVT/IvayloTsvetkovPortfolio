@@ -1,265 +1,371 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Learn about Ivaylo Tsvetkov, a front-end focused developer with technical awareness across cyber security, web delivery, and digital project work.">
+    <meta name="theme-color" content="#07111f">
+    <meta name="color-scheme" content="dark">
+    <meta property="og:title" content="About | Ivaylo Tsvetkov">
+    <meta property="og:description" content="Learn about Ivaylo Tsvetkov, a front-end focused developer with technical awareness across cyber security, web delivery, and digital project work.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="ivaylo.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About | Ivaylo Tsvetkov">
+    <meta name="twitter:description" content="Learn about Ivaylo Tsvetkov, a front-end focused developer with technical awareness across cyber security, web delivery, and digital project work.">
+    <meta name="twitter:image" content="ivaylo.jpg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="site-shell.css">
     <title>About | Ivaylo Tsvetkov</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Variables matched exactly to index.html */
-            --primary-blue: #3482f6;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --bg-light-blue: #f8fbff;
-            --border-color: #e2e8f0;
+            --panel: rgba(15, 28, 49, 0.82);
+            --panel-soft: rgba(255, 255, 255, 0.04);
+            --text: #eff6ff;
+            --muted: #a9bdd9;
+            --line: rgba(162, 188, 222, 0.18);
+            --accent: #7dd3fc;
+            --shadow: 0 22px 70px rgba(3, 10, 25, 0.45);
         }
+
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: #ffffff;
-            top: 0 !important; /* Prevents layout shifting when translated */
+            font-family: 'Manrope', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.12), transparent 30%),
+                linear-gradient(180deg, #09111f 0%, #0a1424 100%);
+            top: 0 !important;
         }
 
         .container {
-            max-width: 1100px;
+            width: min(1180px, calc(100% - 40px));
             margin: 0 auto;
-            padding: 0 24px;
         }
 
-        /* --- MOBILE FRIENDLY HEADER --- */
         .site-header {
-            padding: 24px 0;
-            background-color: var(--bg-light-blue);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(5, 11, 20, 0.72);
+            border-bottom: 1px solid var(--line);
         }
 
         .header-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* Matches index.html logic */
+            gap: 24px;
+            padding: 18px 0;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-            font-weight: 700;
-            color: var(--text-dark);
             text-decoration: none;
+            color: var(--text);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 20px; /* Standardized gap */
+            align-items: center;
+            gap: 10px;
             margin: 0;
             padding: 0;
-            align-items: center;
             flex-wrap: wrap;
-            justify-content: flex-end;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        .nav-links a.active {
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--primary-blue);
-            padding-bottom: 4px;
-        }
-
-        /* --- CUSTOM TRANSLATOR BUTTON --- */
+        .nav-links a,
         .lang-switch {
-            background: white;
-            border: 1px solid #cbd5e1;
-            padding: 6px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            min-width: 50px;
-            justify-content: center;
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 700;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            background: transparent;
+            transition: 0.25s ease;
         }
 
+        .nav-links a:hover,
+        .nav-links a.active,
         .lang-switch:hover {
-            border-color: var(--primary-blue);
-            color: var(--primary-blue);
+            color: var(--text);
+            border-color: var(--line);
+            background: rgba(125, 211, 252, 0.08);
         }
 
-        /* Hide the default Google Translate UI */
-        #google_translate_element, .goog-te-banner-frame, .skiptranslate {
-            display: none !important;
+        .lang-switch {
+            cursor: pointer;
+            font-family: inherit;
         }
 
-        /* --- HERO SECTION --- */
+        #google_translate_element, .goog-te-banner-frame, .skiptranslate { display: none !important; }
+
+        .hero,
+        .panel,
+        .profile-proof,
+        .skills-section,
+        .about-footer {
+            width: min(1180px, calc(100% - 40px));
+            margin: 36px auto 0;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
         .hero {
-            background-color: rgb(146, 193, 237);
-            padding: 80px 0;
-            text-align: center;
+            padding: 42px;
         }
 
-        .breadcrumb {
-            color: var(--primary-blue);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .eyebrow {
+            display: inline-flex;
+            padding: 8px 14px;
+            border-radius: 999px;
             font-size: 0.8rem;
-            display: block;
-            margin-bottom: 8px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #d7f1ff;
+            background: rgba(125, 211, 252, 0.1);
+            border: 1px solid rgba(125, 211, 252, 0.16);
+        }
+
+        .hero h1,
+        .about-text h2,
+        .skill-category h3,
+        .about-footer h2 {
+            font-family: 'Cormorant Garamond', serif;
         }
 
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            line-height: 1.1;
-            margin: 0;
-            color: var(--text-dark);
+            font-size: clamp(3rem, 4.9vw, 4.5rem);
+            line-height: 0.94;
+            margin: 18px 0 2px;
         }
 
-        /* --- ABOUT CONTENT --- */
-        .about-content {
-            padding: 80px 0;
-            display: flex;
+        .panel {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 36px;
             align-items: center;
-            gap: 60px;
-        }
-
-        .about-image {
-            flex: 1;
+            padding: 36px;
         }
 
         .about-image img {
             width: 100%;
-            max-width: 350px;
-            border-radius: 12px;
+            max-width: 420px;
             display: block;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
         }
 
-        .about-text {
-            flex: 1.5;
+        .about-text p,
+        .skill-category li,
+        .about-footer p {
+            color: var(--muted);
+            line-height: 1.75;
         }
 
         .about-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-top: 0;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+            line-height: 0.96;
+            margin: 0 0 20px;
         }
 
-        .about-text p {
-            margin-bottom: 24px;
-            font-size: 1.05rem;
-            color: #444;
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 22px;
         }
 
-        /* --- SKILLS GRID --- */
+        .highlight {
+            padding: 16px;
+            border-radius: 18px;
+            background: var(--panel-soft);
+            border: 1px solid var(--line);
+        }
+
+        .highlight strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .profile-proof,
         .skills-section {
-            background-color: #fafafa;
-            padding: 80px 0;
-            border-top: 1px solid var(--border-color);
+            padding: 36px;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            align-items: end;
+            margin-bottom: 22px;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.6vw, 3rem);
+            line-height: 0.96;
+        }
+
+        .section-head p {
+            margin: 0;
+            max-width: 54ch;
+            color: var(--muted);
+            line-height: 1.72;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .proof-card {
+            padding: 22px;
+            border-radius: 22px;
+            background: var(--panel-soft);
+            border: 1px solid var(--line);
+        }
+
+        .trust-card {
+            padding: 22px;
+            border-radius: 22px;
+            background: var(--panel-soft);
+            border: 1px solid var(--line);
+        }
+
+        .proof-card strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .trust-card strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #d7f1ff;
+        }
+
+        .proof-card span {
+            color: var(--muted);
+            line-height: 1.72;
+        }
+
+        .trust-card span {
+            color: var(--muted);
+            line-height: 1.72;
         }
 
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            gap: 20px;
+        }
+
+        .skill-category {
+            padding: 24px;
+            border-radius: 22px;
+            background: var(--panel-soft);
+            border: 1px solid var(--line);
         }
 
         .skill-category h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            border-bottom: 2px solid var(--primary-blue);
-            display: inline-block;
-            margin-bottom: 20px;
-            padding-bottom: 4px;
+            margin: 0 0 18px;
+            font-size: 2rem;
         }
 
         .skill-category ul {
             list-style: none;
             padding: 0;
             margin: 0;
-        }
-
-        .skill-category li {
-            color: var(--text-muted);
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
+            display: grid;
+            gap: 12px;
         }
 
         .skill-category li::before {
-            content: "•";
-            color: var(--primary-blue);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
+            content: "+";
+            color: var(--accent);
+            margin-right: 10px;
         }
 
-        /* --- FOOTER --- */
         .about-footer {
-            padding: 100px 0;
+            padding: 42px;
             text-align: center;
+            margin-bottom: 36px;
         }
 
         .about-footer h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-bottom: 30px;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            margin: 0 0 12px;
+        }
+
+        .about-footer p {
+            max-width: 60ch;
+            margin: 0 auto 24px;
         }
 
         .btn-contact {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 24px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #c5f0ff, #61d3ff);
+            color: #05111c;
             text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: all 0.3s ease;
+            font-weight: 800;
         }
 
-        /* --- MOBILE MEDIA QUERIES (Updated from index.html) --- */
+        @media (max-width: 900px) {
+            .panel,
+            .proof-grid,
+            .trust-grid,
+            .skills-grid,
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
-            .header-flex {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            .nav-links {
-                justify-content: center;
-                gap: 12px;
-            }
-            .nav-links li:last-child {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                margin-top: 10px;
-            }
-            .about-content { flex-direction: column; text-align: center; }
-            .about-image img { margin: 0 auto; }
-            .skills-grid { grid-template-columns: 1fr; gap: 30px; }
-            .hero h1 { font-size: 2.2rem; }
+            .header-flex,
+            .section-head { flex-direction: column; align-items: flex-start; }
+            .nav-links li:last-child { width: 100%; }
+            .lang-switch { width: 100%; }
+            .hero,
+            .panel,
+            .profile-proof,
+            .skills-section,
+            .about-footer { padding: 26px; }
         }
     </style>
 </head>
 <body>
-
     <header class="site-header">
         <div class="container header-flex">
             <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
@@ -271,11 +377,7 @@
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="news.html">News</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li>
-                        <button class="lang-switch" onclick="toggleLanguage()">
-                            <span id="lang-text">BG</span>
-                        </button>
-                    </li>
+                    <li><button class="lang-switch" onclick="toggleLanguage()"><span id="lang-text">BG</span></button></li>
                 </ul>
             </nav>
         </div>
@@ -284,59 +386,127 @@
     <div id="google_translate_element"></div>
 
     <section class="hero">
-        <div class="container">
-            <span class="breadcrumb">My Journey</span>
-            <h1>Front-End Developer & <br>Cyber Security Specialist</h1>
-        </div>
+        <span class="eyebrow">Professional Profile</span>
+        <h1>Front-end focus, technical awareness, and a calm approach to delivery.</h1>
     </section>
 
-    <main class="container about-content">
+    <main class="panel">
         <div class="about-image">
             <img src="ivaylo2.jpg" alt="Ivaylo Tsvetkov">
         </div>
         <div class="about-text">
-            <h2>Clean code meets digital integrity.</h2>
-            <p>Blending front-end development with cyber security creates a unique vantage point where <strong>user experience meets digital integrity.</strong></p>
-            <p>I don't just bridge the gap between the user and the data, I protect that bridge. By integrating a <strong>Zero Trust</strong> mindset into the UI/UX process, I ensure that aesthetics never come at the cost of vulnerability.</p>
+            <h2>I am building a career around clearer digital experiences and stronger technical thinking.</h2>
+            <p>I am most interested in front-end, junior web, and digital roles where presentation quality, usability, and technical awareness all matter. My portfolio sits at the intersection of interface design, cyber security understanding, and structured project work.</p>
+            <p>What makes that mix useful is that I do not only think about how a page looks. I also think about how it communicates, how it is supported by the system underneath it, and how the work should be organised so it can be delivered cleanly.</p>
+            <div class="highlights">
+                <div class="highlight">
+                    <strong>Best fit</strong>
+                    Junior front-end, web support, and technically aware digital roles.
+                </div>
+                <div class="highlight">
+                    <strong>What I care about</strong>
+                    Clear communication, thoughtful structure, and dependable execution.
+                </div>
+                <div class="highlight">
+                    <strong>How I add value</strong>
+                    Stronger presentation backed by practical technical reasoning.
+                </div>
+            </div>
         </div>
     </main>
 
+    <section class="profile-proof">
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">Why Hire Me</span>
+                <h2>A clearer summary of what I bring to a team.</h2>
+            </div>
+            <p>This section is here to make the About page easier to scan quickly. Instead of only describing interests, it shows how my work translates into practical value.</p>
+        </div>
+        <div class="proof-grid">
+            <div class="proof-card">
+                <strong>Front-end mindset</strong>
+                <span>I focus on interfaces that feel cleaner, easier to navigate, and more professional in how they present information.</span>
+            </div>
+            <div class="proof-card">
+                <strong>Technical range</strong>
+                <span>I can move between UI work, network and security thinking, and structured project delivery without treating them as disconnected skills.</span>
+            </div>
+            <div class="proof-card">
+                <strong>Professional direction</strong>
+                <span>I am actively shaping this portfolio to reflect real employability: clearer case studies, stronger presentation, and more useful proof of how I work.</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="profile-proof">
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">Trust Signals</span>
+                <h2>Professional context that helps recruiters scan faster.</h2>
+            </div>
+            <p>This section turns the About page into a more useful hiring summary by surfacing the practical signals people usually look for first.</p>
+        </div>
+        <div class="trust-grid">
+            <div class="trust-card">
+                <strong>Education</strong>
+                <span>University-level work across scripting, web technologies, project delivery, and cyber security topics.</span>
+            </div>
+            <div class="trust-card">
+                <strong>Current Focus</strong>
+                <span>Junior front-end, web support, and digital roles where presentation quality and technical awareness both matter.</span>
+            </div>
+            <div class="trust-card">
+                <strong>Tools</strong>
+                <span>HTML, CSS, JavaScript, Java foundations, SQL, Wireshark, Packet Tracer, and structured project documentation.</span>
+            </div>
+            <div class="trust-card">
+                <strong>Working Style</strong>
+                <span>Clear, reliable, visually detail-focused, and comfortable improving both user experience and technical structure.</span>
+            </div>
+        </div>
+    </section>
+
     <section class="skills-section">
-        <div class="container">
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Front-End & Web</h3>
-                    <ul>
-                        <li>HTML5 & CSS3</li>
-                        <li>JavaScript / Java</li>
-                        <li>Responsive Design</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Cyber & Networking</h3>
-                    <ul>
-                        <li>Wireshark Diagnostics</li>
-                        <li>Cisco Packet Tracer</li>
-                        <li>Python Scripting</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Data & Ops</h3>
-                    <ul>
-                        <li>Project Management</li>
-                        <li>SQL Databases</li>
-                        <li>Technical Auditing</li>
-                    </ul>
-                </div>
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">Core Strengths</span>
+                <h2>Skills that support both presentation and problem solving.</h2>
+            </div>
+            <p>I want recruiters and collaborators to see both the tools and the thinking behind them. These categories show the main lanes where I can contribute today.</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Front-End & Web</h3>
+                <ul>
+                    <li>HTML5, CSS3, and responsive interface development</li>
+                    <li>JavaScript foundations and practical UI logic</li>
+                    <li>Audit-led improvements to usability and presentation</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Cyber & Networking</h3>
+                <ul>
+                    <li>Wireshark diagnostics and packet analysis</li>
+                    <li>Cisco Packet Tracer and network modelling</li>
+                    <li>Security-led thinking throughout implementation</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Delivery & Ops</h3>
+                <ul>
+                    <li>Project planning and technical coordination</li>
+                    <li>SQL and structured data handling</li>
+                    <li>Clear documentation, audits, and handover thinking</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <footer class="about-footer">
-        <div class="container">
-            <h2>Let's build something together.</h2>
-            <a href="contact.html" class="btn-contact">Get In Touch</a>
-        </div>
+        <h2>I want this site to show that I am ready to contribute, learn fast, and keep improving.</h2>
+        <p>If you are hiring for a junior web or front-end role, or you want someone who brings both presentation care and technical curiosity, this portfolio is built to start that conversation.</p>
+        <a href="contact.html" class="btn-contact">Get In Touch</a>
     </footer>
 
     <script type="text/javascript">
@@ -346,15 +516,12 @@
                 includedLanguages: 'en,bg',
                 autoDisplay: false
             }, 'google_translate_element');
-            
-            // Check for saved preference on load
             setTimeout(applySavedLanguage, 1000);
         }
 
         function toggleLanguage() {
             const currentLang = localStorage.getItem('preferredLang') || 'en';
-            const newLang = (currentLang === 'en') ? 'bg' : 'en';
-            
+            const newLang = currentLang === 'en' ? 'bg' : 'en';
             changeLanguage(newLang);
         }
 
@@ -379,12 +546,15 @@
 
         function updateButtonText(lang) {
             const btn = document.getElementById('lang-text');
-            if(btn) {
-                btn.innerText = (lang === 'en') ? 'BG' : 'EN';
+            if (btn) {
+                btn.innerText = lang === 'en' ? 'BG' : 'EN';
             }
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <script src="site-enhancements.js"></script>
 </body>
 </html>
+
+
+

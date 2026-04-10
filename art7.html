@@ -1,167 +1,31 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Editorial article from Ivaylo Tsvetkov covering design, security, systems thinking, and future-facing digital ideas.">
+    <meta name="theme-color" content="#07111f">
+    <meta name="color-scheme" content="dark">
+    <meta property="og:title" content="AI-Driven Zero Trust & CTEM | 2026 Tech Insights">
+    <meta property="og:description" content="Editorial article from Ivaylo Tsvetkov covering design, security, systems thinking, and future-facing digital ideas.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="ivaylo.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI-Driven Zero Trust & CTEM | 2026 Tech Insights">
+    <meta name="twitter:description" content="Editorial article from Ivaylo Tsvetkov covering design, security, systems thinking, and future-facing digital ideas.">
+    <meta name="twitter:image" content="ivaylo.jpg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="site-shell.css">
     <title>AI-Driven Zero Trust & CTEM | 2026 Tech Insights</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Theme Palette */
-            --bg-deep: #020617;
-            --surface: #0f172a;
-            --accent-red: #ef4444; 
-            --accent-blue: #3b82f6;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --border: #1e293b;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
-            top: 0 !important; /* Prevent Google Translate shift */
-        }
-
-        /* --- UPDATED TOP NAVIGATION BAR --- */
-        .top-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(2, 6, 23, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 0.75rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .exit-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            color: var(--accent-red);
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: all 0.2s ease;
-        }
-
-        .exit-btn:hover {
-            background: #1e1b4b;
-            transform: scale(1.05);
-        }
-
-        /* --- GOOGLE TRANSLATE STYLING --- */
-        .lang-switch {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 6px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            color: var(--text-main);
-        }
-
-        .lang-switch:hover {
-            border-color: var(--accent-blue);
-            color: var(--accent-blue);
-        }
-
-        #google_translate_element, .goog-te-banner-frame, .skiptranslate {
-            display: none !important;
-        }
-
-        /* --- ARTICLE CONTAINER --- */
-        .article-container {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .category-tag {
-            display: inline-block;
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--accent-red);
-            padding: 0.25rem 0.75rem;
-            border-radius: 99px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #fff, var(--accent-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .meta {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            margin-bottom: 3rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .security-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            border-left: 4px solid var(--accent-red);
-        }
-
-        .security-card h3 {
-            margin-top: 0;
-            color: var(--accent-red);
-        }
-
-        h2 {
-            color: var(--accent-blue);
-            margin-top: 3rem;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            color: var(--text-dim);
-        }
-
-        strong {
-            color: var(--text-main);
-        }
-
-        @media (max-width: 640px) {
-            h1 { font-size: 2.2rem; }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="article-premium.css">
 </head>
 <body>
 
     <nav class="top-nav">
-        <a href="blog.html" class="exit-btn" title="Back to Blog">✕</a>
+        <a href="blog.html" class="exit-btn" title="Back to Blog">&times;</a>
 
         <button class="lang-switch" onclick="toggleLanguage()">
             <span id="lang-text">BG</span>
@@ -175,11 +39,31 @@
         <h1>AI-Driven Zero Trust & CTEM</h1>
         
         <div class="meta">
-            Published July 05, 2025 • 6 min read
+            Published July 05, 2025 | 6 min read
+        </div>
+
+        <div class="feature-hero">
+            <div class="feature-hero-card">
+                <img src="art7.jpg" alt="AI-driven cyber resilience concept">
+            </div>
+            <div class="feature-hero-copy">
+                <span class="feature-label">Feature Brief</span>
+                <p>This article frames zero trust and CTEM as an operating model rather than a checklist, focusing on how AI shifts security toward continuous verification and response.</p>
+                <div class="editorial-grid">
+                    <div class="editorial-card"><strong>Theme</strong><p>Security posture built around continuity instead of perimeter.</p></div>
+                    <div class="editorial-card"><strong>Focus</strong><p>Micro-segmentation, exposure management, and automated remediation.</p></div>
+                </div>
+            </div>
         </div>
 
         <section class="content">
             <p>In the digital landscape of 2026, the perimeter has not just dissolved; it has become irrelevant. We operate in a world of <strong>Continuous Adaptive Trust</strong>, where identity is verified every millisecond through AI-driven behavioral analysis.</p>
+
+            <div class="insight-strip">
+                <div><strong>What Changed</strong><span>Security moved from periodic checks to continuous adaptive verification.</span></div>
+                <div><strong>Why It Matters</strong><span>Resilience now depends on systems that can validate, prioritise, and respond in real time.</span></div>
+                <div><strong>Read It As</strong><span>A cyber resilience piece about operating through attacks rather than reacting after them.</span></div>
+            </div>
 
             <div class="security-card">
                 <h3>The 2026 Shift: Micro-Segmentation</h3>
@@ -191,6 +75,11 @@
 
             <h2>3. Automated Remediation</h2>
             <p>When a vulnerability is identified, the <strong>Active Defense Layer</strong> can automatically apply "virtual patches" or adjust Zero Trust policies. This intent-based orchestration ensures the infrastructure remains resilient even before a permanent fix is manually deployed.</p>
+
+            <div class="pull-quote">
+                <blockquote>"The goal is no longer just to block threats. The goal is to keep operating while threats are already in motion."</blockquote>
+                <span>Editorial Pull Quote</span>
+            </div>
 
             <div class="security-card">
                 <h3>The Verdict</h3>
@@ -244,5 +133,8 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+    <script src="site-enhancements.js"></script>
 </body>
 </html>
+
+
