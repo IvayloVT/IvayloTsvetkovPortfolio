@@ -26,8 +26,11 @@
 <body>
     <header class="site-header">
         <div class="container header-flex">
-            <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
-            <nav><ul class="nav-links">
+            <div class="header-top">
+                <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" onclick="toggleMenu()">Menu</button>
+            </div>
+            <nav id="site-nav"><ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="portfolio.html" class="active">Portfolio</a></li>
@@ -207,12 +210,21 @@
             const btn = document.getElementById('lang-text');
             if (btn) btn.innerText = lang === 'en' ? 'BG' : 'EN';
         }
+        function toggleMenu() {
+            var navToggle = document.querySelector('.nav-toggle');
+            var nav = document.getElementById('site-nav');
+
+            if (!navToggle || !nav) {
+                return;
+            }
+
+            var isOpen = nav.classList.toggle('nav-open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="site-enhancements.js"></script>
 </body>
 </html>
-
-
 
 
