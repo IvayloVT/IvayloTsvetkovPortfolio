@@ -949,25 +949,12 @@
                 btn.innerText = lang === 'en' ? 'BG' : 'EN';
             }
         }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var navToggle = document.querySelector('.nav-toggle');
-            var nav = document.getElementById('site-nav');
-
-            if (!navToggle || !nav) {
-                return;
-            }
-
-            navToggle.addEventListener('click', function () {
-                var isOpen = nav.classList.toggle('nav-open');
-                navToggle.setAttribute('aria-expanded', String(isOpen));
-            });
-        });
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="site-enhancements.js"></script>
 </body>
 </html>
+
 
 
 
