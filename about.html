@@ -79,7 +79,7 @@
             letter-spacing: 0.08em;
         }
 
-        .nav-links {
+                .nav-links {
             list-style: none;
             display: flex;
             align-items: center;
@@ -88,7 +88,6 @@
             padding: 0;
             flex-wrap: wrap;
         }
-
         .nav-links a,
         .lang-switch {
             text-decoration: none;
@@ -102,7 +101,6 @@
             background: transparent;
             transition: 0.25s ease;
         }
-
         .nav-links a:hover,
         .nav-links a.active,
         .lang-switch:hover {
@@ -110,12 +108,24 @@
             border-color: var(--line);
             background: rgba(125, 211, 252, 0.08);
         }
-
         .lang-switch {
             cursor: pointer;
             font-family: inherit;
         }
-
+        .nav-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(125, 211, 252, 0.08);
+            color: var(--text);
+            padding: 10px 16px;
+            font-size: 0.92rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+        }
         #google_translate_element, .goog-te-banner-frame, .skiptranslate { display: none !important; }
 
         .hero,
@@ -357,30 +367,26 @@
             }
         }
 
-        @media (max-width: 768px) {
+                        @media (max-width: 768px) {
             .site-header { position: relative; backdrop-filter: none; background: rgba(5, 11, 20, 0.94); }
-            .container,
-            .hero,
-            .panel,
-            .profile-proof,
-            .skills-section,
-            .about-footer { width: min(100% - 24px, 1180px); }
-            .header-flex,
-            .section-head { flex-direction: column; align-items: flex-start; }
-            nav { width: 100%; }
+            .hero, .panel, .profile-proof, .skills-section, .about-footer { width: min(100% - 24px, 1180px); }
+            .header-flex { flex-wrap: wrap; align-items: center; gap: 16px; }
+            nav { width: 100%; display: none; }
+            nav.nav-open { display: block; }
+            .nav-toggle { display: inline-flex; margin-left: auto; }
             .logo { font-size: 1.55rem; }
             .nav-links { width: 100%; gap: 8px; }
             .nav-links li { width: calc(50% - 4px); }
             .nav-links li:last-child { width: 100%; }
             .nav-links a { display: block; width: 100%; text-align: center; }
             .lang-switch { width: 100%; }
-            .hero,
-            .panel,
-            .profile-proof,
-            .skills-section,
-            .about-footer { padding: 26px; }
+            .panel { grid-template-columns: 1fr; padding: 24px; }
+            .hero, .profile-proof, .skills-section, .about-footer { padding: 24px; }
+            .highlights, .skills-grid { grid-template-columns: 1fr; }
         }
-    </style>
+        @media (min-width: 769px) {
+            nav { display: block !important; }
+        }    </style>
 </head>
 <body>
     <header class="site-header">
@@ -529,20 +535,13 @@
 
     <script type="text/javascript">
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,bg',
-                autoDisplay: false
-            }, 'google_translate_element');
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,bg', autoDisplay: false }, 'google_translate_element');
             setTimeout(applySavedLanguage, 1000);
         }
-
         function toggleLanguage() {
             const currentLang = localStorage.getItem('preferredLang') || 'en';
-            const newLang = currentLang === 'en' ? 'bg' : 'en';
-            changeLanguage(newLang);
+            changeLanguage(currentLang === 'en' ? 'bg' : 'en');
         }
-
         function changeLanguage(langCode) {
             const select = document.querySelector('.goog-te-combo');
             if (select) {
@@ -552,29 +551,30 @@
                 updateButtonText(langCode);
             }
         }
-
         function applySavedLanguage() {
             const savedLang = localStorage.getItem('preferredLang');
-            if (savedLang && savedLang !== 'en') {
-                changeLanguage(savedLang);
-            } else {
-                updateButtonText('en');
-            }
+            if (savedLang && savedLang !== 'en') changeLanguage(savedLang);
+            else updateButtonText('en');
         }
-
         function updateButtonText(lang) {
             const btn = document.getElementById('lang-text');
-            if (btn) {
-                btn.innerText = lang === 'en' ? 'BG' : 'EN';
-            }
+            if (btn) btn.innerText = lang === 'en' ? 'BG' : 'EN';
         }
+        document.addEventListener('DOMContentLoaded', function () {
+            var navToggle = document.querySelector('.nav-toggle');
+            var nav = document.getElementById('site-nav');
+
+            if (!navToggle || !nav) {
+                return;
+            }
+
+            navToggle.addEventListener('click', function () {
+                var isOpen = nav.classList.toggle('nav-open');
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+        });
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="site-enhancements.js"></script>
 </body>
 </html>
-
-
-
-
-
