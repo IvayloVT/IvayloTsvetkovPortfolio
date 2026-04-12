@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -128,9 +128,21 @@
             background: rgba(125, 211, 252, 0.08);
         }
 
-        .lang-switch {
+        
+
+        .nav-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(125, 211, 252, 0.08);
+            color: var(--text);
+            padding: 10px 16px;
+            font-size: 0.92rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
             cursor: pointer;
-            font-family: inherit;
         }
 
         #google_translate_element, .goog-te-banner-frame, .skiptranslate { display: none !important; }
@@ -655,9 +667,21 @@
             background: rgba(125, 211, 252, 0.08);
         }
 
-        header.site-header .lang-switch {
+        header.site-header 
+
+        .nav-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(125, 211, 252, 0.08);
+            color: var(--text);
+            padding: 10px 16px;
+            font-size: 0.92rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
             cursor: pointer;
-            font-family: inherit;
         }
 
         @media (max-width: 768px) {
@@ -668,12 +692,23 @@
             }
 
             header.site-header .header-flex {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 16px;
+            }
+
+            header.site-header .nav-toggle {
+                display: inline-flex;
+                margin-left: auto;
             }
 
             header.site-header nav {
                 width: 100%;
+                display: none;
+            }
+
+            header.site-header nav.nav-open {
+                display: block;
             }
 
             header.site-header .logo {
@@ -703,13 +738,20 @@
                 width: 100%;
             }
         }
+
+        @media (min-width: 769px) {
+            header.site-header nav {
+                display: block !important;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="site-header">
         <div class="container header-flex">
             <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
-            <nav>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+            <nav id="site-nav">
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About</a></li>
@@ -907,11 +949,28 @@
                 btn.innerText = lang === 'en' ? 'BG' : 'EN';
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var navToggle = document.querySelector('.nav-toggle');
+            var nav = document.getElementById('site-nav');
+
+            if (!navToggle || !nav) {
+                return;
+            }
+
+            navToggle.addEventListener('click', function () {
+                var isOpen = nav.classList.toggle('nav-open');
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+        });
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="site-enhancements.js"></script>
 </body>
 </html>
+
+
+
 
 
 
