@@ -79,12 +79,14 @@
             border-bottom: 1px solid var(--line);
         }
 
-        .header-flex {
+        
+
+        .header-top {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 24px;
-            padding: 18px 0;
+            justify-content: space-between;
+            gap: 16px;
+            width: 100%;
         }
 
         .logo {
@@ -612,12 +614,14 @@
             border-bottom: 1px solid var(--line);
         }
 
-        header.site-header .header-flex {
+        header.site-header 
+
+        .header-top {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 24px;
-            padding: 18px 0;
+            justify-content: space-between;
+            gap: 16px;
+            width: 100%;
         }
 
         header.site-header .logo {
@@ -690,12 +694,15 @@
                 background: rgba(5, 11, 20, 0.94);
             }
 
-            header.site-header .header-flex {
-                display: grid;
-                grid-template-columns: minmax(0, 1fr) auto;
-                align-items: center;
-                gap: 16px;
-            }
+            header.site-header 
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            width: 100%;
+        }
 
             header.site-header .nav-toggle {
                 display: inline-flex;
@@ -748,13 +755,84 @@
                 display: block !important;
             }
         }
+    
+        @media (max-width: 768px) {
+            .site-header .header-flex {
+                display: block !important;
+                gap: 0 !important;
+            }
+
+            .site-header .header-top {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                gap: 12px !important;
+                width: 100% !important;
+            }
+
+            .site-header .logo {
+                min-width: 0 !important;
+                white-space: nowrap !important;
+                letter-spacing: 0.03em !important;
+                font-size: 0.92rem !important;
+            }
+
+            .site-header .nav-toggle {
+                display: inline-flex !important;
+                flex: 0 0 auto !important;
+                margin: 0 !important;
+            }
+
+            .site-header #site-nav {
+                display: none !important;
+                width: 100% !important;
+                margin-top: 12px !important;
+            }
+
+            .site-header #site-nav.nav-open {
+                display: block !important;
+            }
+
+            .site-header .nav-links {
+                width: 100% !important;
+                gap: 8px !important;
+            }
+
+            .site-header .nav-links li {
+                width: calc(50% - 4px) !important;
+            }
+
+            .site-header .nav-links li:last-child {
+                width: 100% !important;
+            }
+
+            .site-header .nav-links a,
+            .site-header .lang-switch {
+                display: block !important;
+                width: 100% !important;
+                text-align: center !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .site-header #site-nav {
+                display: block !important;
+                margin-top: 0 !important;
+            }
+
+            .site-header .nav-toggle {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="site-header">
         <div class="container header-flex">
-            <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
-            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+            <div class="header-top">
+                <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+            </div>
             <nav id="site-nav">
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Home</a></li>
@@ -972,6 +1050,8 @@
     <script src="site-enhancements.js"></script>
 </body>
 </html>
+
+
 
 
 
