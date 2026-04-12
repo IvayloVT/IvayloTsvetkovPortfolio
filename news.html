@@ -135,8 +135,8 @@
             .header-flex { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px; }
             nav { grid-column: 1 / -1; width: 100%; display: none; }
             nav.nav-open { display: block; }
-            .nav-toggle { display: inline-flex; }
-            .logo { min-width: 0; font-size: 1.55rem; }
+            .nav-toggle { display: inline-flex; justify-self: end; }
+            .logo { min-width: 0; white-space: nowrap; letter-spacing: 0.04em; font-size: 1.05rem; }
             .nav-links { width: 100%; gap: 8px; }
             .nav-links li { width: calc(50% - 4px); }
             .nav-links li:last-child { width: 100%; }
@@ -237,6 +237,7 @@
     <script src="site-enhancements.js"></script>
 </body>
 </html>
+
 
 
 
