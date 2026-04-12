@@ -691,17 +691,18 @@
             }
 
             header.site-header .header-flex {
-                flex-wrap: wrap;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
                 align-items: center;
                 gap: 16px;
             }
 
             header.site-header .nav-toggle {
                 display: inline-flex;
-                margin-left: auto;
             }
 
             header.site-header nav {
+                grid-column: 1 / -1;
                 width: 100%;
                 display: none;
             }
@@ -711,6 +712,7 @@
             }
 
             header.site-header .logo {
+                min-width: 0;
                 font-size: 1.55rem;
             }
 
@@ -967,6 +969,9 @@
     <script src="site-enhancements.js"></script>
 </body>
 </html>
+
+
+
 
 
 
