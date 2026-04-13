@@ -317,7 +317,7 @@
         <div class="container header-flex">
             <div class="header-top">
                 <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
-                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" onclick="toggleMenu()">Menu</button>
             </div>
             <nav id="site-nav">
                 <ul class="nav-links">
@@ -389,12 +389,20 @@
                     <p>A rebuilt customer-facing experience focused on clearer navigation, stronger conversion flow, and cleaner front-end execution.</p>
                 </div>
             </a>
-            <a href="intro.html" class="project-card">
+            <a href="p5.html" class="project-card">
                 <div class="image-wrapper"><img src="rs.jpg" alt="Rap Stories"></div>
                 <div class="project-info">
                     <div class="tags"><span class="tag">Digital Product</span></div>
                     <h2>Rap Stories</h2>
                     <p>An editorial-style content experience that shows branding, layout direction, and immersive front-end presentation.</p>
+                </div>
+            </a>
+            <a href="p6.html" class="project-card">
+                <div class="image-wrapper"><img src="port6.jpg" alt="News Pulse+"></div>
+                <div class="project-info">
+                    <div class="tags"><span class="tag">News Platform</span></div>
+                    <h2>News Pulse+</h2>
+                    <p>A modern news experience that brings together editorial styling, fast topic discovery, and a polished front-end presentation.</p>
                 </div>
             </a>
         </div>
@@ -427,6 +435,17 @@
             const btn = document.getElementById('lang-text');
             if (btn) btn.innerText = lang === 'en' ? 'BG' : 'EN';
         }
+        function toggleMenu() {
+            var navToggle = document.querySelector('.nav-toggle');
+            var nav = document.getElementById('site-nav');
+
+            if (!navToggle || !nav) {
+                return;
+            }
+
+            var isOpen = nav.classList.toggle('nav-open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        }
         document.addEventListener('DOMContentLoaded', function () {
             var navToggle = document.querySelector('.nav-toggle');
             var nav = document.getElementById('site-nav');
@@ -445,6 +464,8 @@
     <script src="site-enhancements.js"></script>
 </body>
 </html>
+
+
 
 
 
