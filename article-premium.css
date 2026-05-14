@@ -1,8 +1,5 @@
 :root {
-    --page-bg:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 28%),
-        radial-gradient(circle at 85% 10%, rgba(45, 212, 191, 0.1), transparent 24%),
-        linear-gradient(180deg, #09111f 0%, #0a1323 100%);
+    --page-bg: #07111f;
     --surface: rgba(11, 22, 38, 0.86);
     --surface-soft: rgba(255, 255, 255, 0.04);
     --border: rgba(162, 188, 222, 0.16);
@@ -27,6 +24,11 @@ body {
     margin: 0;
     padding: 0;
     top: 0 !important;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
 }
 
 .top-nav {
@@ -425,9 +427,11 @@ strong {
     color: var(--heading) !important;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .top-nav {
-        padding: 0.75rem 1rem;
+        position: relative;
+        backdrop-filter: none;
+        background: rgba(5, 11, 20, 0.94);
     }
 
     .feature-hero,
@@ -438,18 +442,56 @@ strong {
 
     .article-container,
     .container {
-        margin: 1.5rem auto 2rem;
-        padding: 1.8rem 1rem 2rem;
+        width: min(100% - 24px, 920px);
+        margin: 1.25rem auto 1.75rem;
+        padding: 1.5rem 0.9rem 1.75rem;
         border-radius: 24px;
     }
 
+    .feature-hero-card,
+    .feature-hero-copy,
+    .pull-quote,
+    .editorial-card,
+    .ai-feature-card,
+    .subsection,
+    .section-card,
+    .verdict {
+        padding: 1.2rem !important;
+    }
+
     h1 {
-        font-size: 2.3rem;
+        font-size: clamp(2.15rem, 12vw, 3rem);
+        line-height: 0.98;
+    }
+
+    h2 {
+        font-size: clamp(1.65rem, 8vw, 2.1rem);
+        margin-top: 2rem;
+    }
+
+    p {
+        font-size: 0.98rem;
+        line-height: 1.74;
+    }
+
+    .feature-hero-card img {
+        min-height: 0;
+        aspect-ratio: 4 / 5;
+    }
+
+    .pull-quote blockquote {
+        font-size: clamp(1.45rem, 7vw, 1.9rem);
     }
 
     .portrait-wrapper {
         float: none;
         width: 100%;
-        margin: 0 0 1.5rem;
+        margin: 0 0 1.25rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .top-nav {
+        padding: 0.75rem 1rem;
     }
 }
