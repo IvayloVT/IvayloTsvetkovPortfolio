@@ -10,11 +10,14 @@
     <meta property="og:title" content="Home | Ivaylo Tsvetkov">
     <meta property="og:description" content="Professional portfolio of Ivaylo Tsvetkov featuring front-end work, cyber security awareness, case studies, and polished digital presentation.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="ivaylo-main.jpg">
+    <meta property="og:image" content="https://ivaylo-tsvetkov.com/ivaylo-seo.jpg">
+    <meta property="og:image:width" content="1536">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:type" content="image/jpeg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Home | Ivaylo Tsvetkov">
     <meta name="twitter:description" content="Professional portfolio of Ivaylo Tsvetkov featuring front-end work, cyber security awareness, case studies, and polished digital presentation.">
-    <meta name="twitter:image" content="ivaylo-main.jpg">
+    <meta name="twitter:image" content="https://ivaylo-tsvetkov.com/ivaylo-seo.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="site-shell.css">
     <title>Home | Ivaylo Tsvetkov</title>
@@ -555,7 +558,7 @@
             }
 
             .hero {
-                padding: 28px 0 24px;
+                padding: 36px 0 24px;
             }
 
             .hero-copy,
@@ -831,7 +834,7 @@
         <div class="container header-flex">
             <div class="header-top">
                 <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
-                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" onclick="var nav=document.getElementById('site-nav'); if(!nav) return false; var open=nav.classList.toggle('nav-open'); this.setAttribute('aria-expanded', String(open)); return false;">Menu</button>
             </div>
             <nav id="site-nav">
                 <ul class="nav-links">
@@ -840,6 +843,7 @@
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="news.html">News</a></li>
+                    <li><a href="fitness.html">Fitness</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><button class="lang-switch" onclick="toggleLanguage()"><span id="lang-text">BG</span></button></li>
                 </ul>
@@ -1031,25 +1035,23 @@
                 btn.innerText = lang === 'en' ? 'BG' : 'EN';
             }
         }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var navToggle = document.querySelector('.nav-toggle');
-            var nav = document.getElementById('site-nav');
-
-            if (!navToggle || !nav) {
-                return;
-            }
-
-            navToggle.addEventListener('click', function () {
-                var isOpen = nav.classList.toggle('nav-open');
-                navToggle.setAttribute('aria-expanded', String(isOpen));
-            });
-        });
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script src="site-enhancements.js"></script>
+    <script>
+window.toggleMenu = window.toggleMenu || function () {
+    var nav = document.getElementById('site-nav');
+    var btn = document.querySelector('.nav-toggle');
+    if (!nav || !btn) return false;
+    var open = nav.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', String(open));
+    return open;
+};
+</script>
+<script src="site-enhancements.js"></script>
 </body>
 </html>
+
+
 
 
 
