@@ -10,11 +10,14 @@
     <meta property="og:title" content="News Pulse+ | Case Study">
     <meta property="og:description" content="Case study for News Pulse+ showing editorial front-end design, modern news navigation, and digital product presentation.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="port6.jpg">
+    <meta property="og:image" content="https://ivaylo-tsvetkov.com/ivaylo-seo.jpg">
+    <meta property="og:image:width" content="1536">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:type" content="image/jpeg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="News Pulse+ | Case Study">
     <meta name="twitter:description" content="Case study for News Pulse+ showing editorial front-end design, modern news navigation, and digital product presentation.">
-    <meta name="twitter:image" content="port6.jpg">
+    <meta name="twitter:image" content="https://ivaylo-tsvetkov.com/ivaylo-seo.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="site-shell.css">
     <title>News Pulse+ | Case Study</title>
@@ -28,7 +31,7 @@
         <div class="container header-flex">
             <div class="header-top">
                 <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
-                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" onclick="toggleMenu()">Menu</button>
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" onclick="var nav=document.getElementById('site-nav'); if(!nav) return false; var open=nav.classList.toggle('nav-open'); this.setAttribute('aria-expanded', String(open)); return false;">Menu</button>
             </div>
             <nav id="site-nav"><ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -36,6 +39,7 @@
                 <li><a href="portfolio.html" class="active">Portfolio</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="news.html">News</a></li>
+                <li><a href="fitness.html">Fitness</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><button class="lang-switch" onclick="toggleLanguage()"><span id="lang-text">BG</span></button></li>
             </ul></nav>
@@ -158,19 +162,18 @@
             const btn = document.getElementById('lang-text');
             if (btn) btn.innerText = lang === 'en' ? 'BG' : 'EN';
         }
-        function toggleMenu() {
-            var navToggle = document.querySelector('.nav-toggle');
-            var nav = document.getElementById('site-nav');
-
-            if (!navToggle || !nav) {
-                return;
-            }
-
-            var isOpen = nav.classList.toggle('nav-open');
-            navToggle.setAttribute('aria-expanded', String(isOpen));
-        }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script src="site-enhancements.js"></script>
+    <script>
+window.toggleMenu = window.toggleMenu || function () {
+    var nav = document.getElementById('site-nav');
+    var btn = document.querySelector('.nav-toggle');
+    if (!nav || !btn) return false;
+    var open = nav.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', String(open));
+    return open;
+};
+</script>
+<script src="site-enhancements.js"></script>
 </body>
 </html>
