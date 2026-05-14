@@ -481,6 +481,22 @@
                 width: 100% !important;
             }
 
+            html.translated-ltr .site-header .logo,
+            html.translated-rtl .site-header .logo,
+            body.translated-ltr .site-header .logo,
+            body.translated-rtl .site-header .logo {
+                font-size: clamp(1.42rem, 6.3vw, 1.62rem) !important;
+                letter-spacing: 0.045em !important;
+            }
+
+            html.translated-ltr .site-header .nav-toggle,
+            html.translated-rtl .site-header .nav-toggle,
+            body.translated-ltr .site-header .nav-toggle,
+            body.translated-rtl .site-header .nav-toggle {
+                min-width: 88px !important;
+                padding-inline: 16px !important;
+            }
+
             .site-header .nav-toggle {
                 display: inline-flex !important;
                 flex: 0 0 auto !important;
@@ -541,8 +557,8 @@
     <header class="site-header">
         <div class="container header-flex">
             <div class="header-top">
-                <a href="index.html" class="logo notranslate" translate="no">IVAYLO TSVETKOV</a>
-                <button class="nav-toggle notranslate" translate="no" type="button" aria-expanded="false" aria-controls="site-nav" onclick="var nav=document.getElementById('site-nav'); if(!nav) return false; var open=nav.classList.toggle('nav-open'); this.setAttribute('aria-expanded', String(open)); return false;">Menu</button>
+                <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" onclick="var nav=document.getElementById('site-nav'); if(!nav) return false; var open=nav.classList.toggle('nav-open'); this.setAttribute('aria-expanded', String(open)); return false;">Menu</button>
             </div>
             <nav id="site-nav">
                 <ul class="nav-links">
