@@ -8,6 +8,11 @@
 
         var isOpen = nav.classList.toggle("nav-open");
         navToggle.setAttribute("aria-expanded", String(isOpen));
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            nav.style.setProperty("display", isOpen ? "block" : "none", "important");
+        } else {
+            nav.style.removeProperty("display");
+        }
         return isOpen;
     };
 
@@ -89,10 +94,19 @@
             nav.querySelectorAll("a").forEach(function (link) {
                 link.addEventListener("click", function () {
                     nav.classList.remove("nav-open");
+                    nav.style.removeProperty("display");
                     navToggle.setAttribute("aria-expanded", "false");
                 });
             });
         }
+
+        document.addEventListener("click", function (event) {
+            var toggle = event.target.closest ? event.target.closest(".nav-toggle") : null;
+            if (!toggle || !header.contains(toggle)) return;
+            event.preventDefault();
+            event.stopPropagation();
+            window.toggleMenu();
+        }, true);
 
         window.addEventListener("scroll", function () {
             if (!mobileMedia.matches) {
