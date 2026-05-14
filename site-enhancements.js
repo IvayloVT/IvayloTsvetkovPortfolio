@@ -1,4 +1,16 @@
 (function () {
+    window.toggleMenu = function () {
+        var header = document.querySelector(".site-header");
+        var nav = document.getElementById("site-nav");
+        var navToggle = header ? header.querySelector(".nav-toggle") : document.querySelector(".nav-toggle");
+
+        if (!nav || !navToggle) return false;
+
+        var isOpen = nav.classList.toggle("nav-open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        return isOpen;
+    };
+
     var body = document.body;
     if (!body) return;
 
@@ -43,6 +55,7 @@
                         '<a href="portfolio.html">Portfolio</a>' +
                         '<a href="blog.html">Blog</a>' +
                         '<a href="news.html">News</a>' +
+                        '<a href="fitness.html">Fitness</a>' +
                         '<a href="contact.html">Contact</a>' +
                     '</div>' +
                 '</div>' +
@@ -63,6 +76,23 @@
     if (header) {
         body.classList.add("header-scroll-enabled");
         var mobileMedia = window.matchMedia("(max-width: 768px)");
+        var navToggle = header.querySelector(".nav-toggle");
+        var nav = header.querySelector("#site-nav");
+
+        if (navToggle && nav) {
+            navToggle.onclick = function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                window.toggleMenu();
+            };
+
+            nav.querySelectorAll("a").forEach(function (link) {
+                link.addEventListener("click", function () {
+                    nav.classList.remove("nav-open");
+                    navToggle.setAttribute("aria-expanded", "false");
+                });
+            });
+        }
 
         window.addEventListener("scroll", function () {
             if (!mobileMedia.matches) {
