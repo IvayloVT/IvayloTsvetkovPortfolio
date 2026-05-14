@@ -333,15 +333,15 @@ body.motion-safe [data-reveal].is-visible {
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        min-width: 104px !important;
-        min-height: 54px !important;
-        padding: 10px 22px !important;
+        min-width: 88px !important;
+        min-height: 46px !important;
+        padding: 8px 18px !important;
         border-radius: 999px !important;
         border: 1px solid rgba(186, 230, 253, 0.8) !important;
         background: #7dd3fc !important;
         color: #04111d !important;
         font: inherit !important;
-        font-size: 1rem !important;
+        font-size: 0.92rem !important;
         font-weight: 800 !important;
         cursor: pointer !important;
     }
