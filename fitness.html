@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fitness profile page for Ivaylo Tsvetkov, covering training mindset, routine structure, and personal discipline.">
+    <meta name="theme-color" content="#07111f">
+    <meta name="color-scheme" content="dark">
+    <meta property="og:title" content="Fitness | Ivaylo Tsvetkov">
+    <meta property="og:description" content="Training mindset, routine structure, and personal discipline inside Ivaylo Tsvetkov's portfolio.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://ivaylo-tsvetkov.com/ivaylo-seo.jpg">
+    <meta property="og:image:width" content="1536">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fitness | Ivaylo Tsvetkov">
+    <meta name="twitter:description" content="Training mindset, routine structure, and personal discipline inside Ivaylo Tsvetkov's portfolio.">
+    <meta name="twitter:image" content="https://ivaylo-tsvetkov.com/ivaylo-seo.jpg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="site-shell.css">
+    <title>Fitness | Ivaylo Tsvetkov</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text: #eff6ff;
+            --muted: #a9bdd9;
+            --line: rgba(162, 188, 222, 0.18);
+            --panel: rgba(15, 28, 49, 0.82);
+            --panel-soft: rgba(255, 255, 255, 0.05);
+            --accent: #7dd3fc;
+            --accent-strong: #38bdf8;
+            --shadow: 0 22px 70px rgba(3, 10, 25, 0.45);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Manrope', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 32%),
+                linear-gradient(180deg, #09111f 0%, #0b1526 52%, #050b14 100%);
+            top: 0 !important;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; }
+        img { max-width: 100%; }
+        .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            line-height: normal;
+            backdrop-filter: blur(18px);
+            background: rgba(5, 11, 20, 0.72);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: var(--text);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a,
+        .lang-switch {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: normal;
+            font-weight: 700;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            background: transparent;
+            transition: 0.25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active,
+        .lang-switch:hover {
+            color: var(--text);
+            border-color: var(--line);
+            background: rgba(125, 211, 252, 0.08);
+        }
+
+        .lang-switch {
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .nav-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(125, 211, 252, 0.08);
+            color: var(--text);
+            padding: 10px 16px;
+            font-size: 0.92rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+        }
+
+        #google_translate_element, .goog-te-banner-frame, .skiptranslate { display: none !important; }
+
+        .hero {
+            width: min(1180px, calc(100% - 40px));
+            margin: 36px auto 0;
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+            gap: 26px;
+            align-items: stretch;
+        }
+
+        .hero-copy,
+        .training-panel,
+        .fitness-section {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-copy {
+            border-radius: 28px;
+            padding: 44px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #d7f1ff;
+            background: rgba(125, 211, 252, 0.1);
+            border: 1px solid rgba(125, 211, 252, 0.16);
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1;
+        }
+
+        h1 {
+            margin: 22px 0 18px;
+            font-size: clamp(3rem, 7vw, 6.7rem);
+            max-width: 900px;
+        }
+
+        .hero-copy p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 1.04rem;
+            max-width: 680px;
+        }
+
+        .training-panel {
+            border-radius: 28px;
+            overflow: hidden;
+            display: grid;
+            grid-template-rows: 1fr auto;
+            min-height: 430px;
+        }
+
+        .training-image {
+            min-height: clamp(520px, 70vw, 820px);
+            background:
+                linear-gradient(180deg, rgba(5, 11, 20, 0), rgba(5, 11, 20, 0.18)),
+                #020509 url("my_fitness_portrait.jpg") center center / contain no-repeat;
+        }
+
+        .training-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--line);
+        }
+
+        .stat {
+            padding: 22px;
+            border-right: 1px solid var(--line);
+        }
+
+        .stat:last-child { border-right: 0; }
+
+        .stat strong {
+            display: block;
+            font-size: 1.8rem;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat span {
+            display: block;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .fitness-section {
+            width: min(1180px, calc(100% - 40px));
+            margin: 28px auto 0;
+            border-radius: 28px;
+            padding: 36px;
+        }
+
+        .fitness-section:last-of-type {
+            margin-bottom: 36px;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            align-items: end;
+            margin-bottom: 24px;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
+        }
+
+        .section-head p {
+            margin: 0;
+            color: var(--muted);
+            max-width: 460px;
+        }
+
+        .routine-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .routine-card {
+            min-height: 220px;
+            padding: 24px;
+            border-radius: 18px;
+            border: 1px solid var(--line);
+            background: var(--panel-soft);
+        }
+
+        .routine-card h3 {
+            margin: 0 0 12px;
+            font-size: 2rem;
+        }
+
+        .routine-card p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .program-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 360px;
+            padding: 22px;
+            border-radius: 18px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.04);
+            color: inherit;
+            text-decoration: none;
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(125, 211, 252, 0.34);
+            background: rgba(125, 211, 252, 0.08);
+        }
+
+        .program-card .day {
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .program-card h3 {
+            margin: 10px 0 16px;
+            font-size: 1.72rem;
+        }
+
+        .program-card ul,
+        .nutrition-list {
+            display: grid;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .program-card li,
+        .nutrition-list li {
+            color: var(--muted);
+            font-size: 0.93rem;
+        }
+
+        .program-card li::before,
+        .nutrition-list li::before {
+            content: "+";
+            margin-right: 8px;
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .nutrition-panel {
+            margin-top: 18px;
+            padding: 24px;
+            border-radius: 18px;
+            border: 1px solid rgba(125, 211, 252, 0.18);
+            background: rgba(125, 211, 252, 0.07);
+        }
+
+        .nutrition-panel h3 {
+            margin: 0 0 14px;
+            font-size: 2rem;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 18px;
+        }
+
+        .meal-example {
+            display: grid;
+            gap: 10px;
+            margin: 0;
+        }
+
+        .meal-example div {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .meal-example strong {
+            color: var(--text);
+        }
+
+        .pill-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            min-height: 40px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(125, 211, 252, 0.18);
+            color: #d7f1ff;
+            background: rgba(125, 211, 252, 0.08);
+            font-weight: 800;
+            font-size: 0.86rem;
+        }
+
+        .mindset-list {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .mindset-item {
+            padding: 20px;
+            border-radius: 18px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .mindset-item span {
+            display: block;
+            color: var(--accent);
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .mindset-item p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .section-head {
+                display: block;
+            }
+
+            .section-head p {
+                margin-top: 12px;
+            }
+
+            .routine-grid,
+            .program-grid,
+            .mindset-list {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nutrition-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container,
+            .hero,
+            .fitness-section {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .site-header .header-flex {
+                display: block !important;
+                gap: 0 !important;
+            }
+
+            .site-header .header-top {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                gap: 12px !important;
+                width: 100% !important;
+            }
+
+            .site-header .logo {
+                min-width: 0 !important;
+                white-space: nowrap !important;
+                letter-spacing: 0.03em !important;
+                font-size: 0.92rem !important;
+                line-height: normal !important;
+            }
+
+            .site-header .nav-toggle {
+                display: inline-flex !important;
+                flex: 0 0 auto !important;
+                margin: 0 !important;
+            }
+
+            .site-header #site-nav {
+                display: none !important;
+                width: 100% !important;
+                margin-top: 12px !important;
+                padding: 0 0 16px !important;
+            }
+
+            .site-header #site-nav.nav-open {
+                display: block !important;
+            }
+
+            .site-header .nav-links {
+                width: 100% !important;
+                gap: 8px !important;
+            }
+
+            .site-header .nav-links li {
+                width: calc(50% - 4px) !important;
+            }
+
+            .site-header .nav-links li:last-child {
+                width: calc(50% - 4px) !important;
+            }
+
+            .site-header .nav-links a,
+            .site-header .lang-switch {
+                display: block !important;
+                width: 100% !important;
+                text-align: center !important;
+                padding: 11px 8px !important;
+            }
+
+            .hero-copy,
+            .fitness-section {
+                padding: 28px;
+                border-radius: 22px;
+            }
+
+            .training-panel {
+                border-radius: 22px;
+            }
+
+            .training-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .stat {
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .stat:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .routine-grid,
+            .program-grid,
+            .mindset-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .site-header .nav-toggle {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-flex">
+            <div class="header-top">
+                <a href="index.html" class="logo">IVAYLO TSVETKOV</a>
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" onclick="var nav=document.getElementById('site-nav'); if(!nav) return false; var open=nav.classList.toggle('nav-open'); this.setAttribute('aria-expanded', String(open)); return false;">Menu</button>
+            </div>
+            <nav id="site-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="fitness.html" class="active">Fitness</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><button class="lang-switch" onclick="toggleLanguage()"><span id="lang-text">BG</span></button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="google_translate_element"></div>
+
+    <section class="hero">
+        <div class="hero-copy">
+            <span class="eyebrow">Fitness</span>
+            <h1>Strength, consistency, and discipline outside the code.</h1>
+            <p>Fitness is part of how I build momentum: structured sessions, steady progress, and the same patience I bring to technical work. This page highlights the mindset behind that routine.</p>
+        </div>
+        <aside class="training-panel" aria-label="Fitness snapshot">
+            <div class="training-image"></div>
+            <div class="training-stats">
+                <div class="stat"><strong>4+</strong><span>Focused sessions weekly</span></div>
+                <div class="stat"><strong>3</strong><span>Core training pillars</span></div>
+                <div class="stat"><strong>1</strong><span>Long-term mindset</span></div>
+            </div>
+        </aside>
+    </section>
+
+    <main>
+        <section class="fitness-section">
+            <div class="section-head">
+                <h2>Training Focus</h2>
+                <p>A simple routine built around effort, recovery, and measurable improvement.</p>
+            </div>
+            <div class="routine-grid">
+                <article class="routine-card">
+                    <h3>Strength</h3>
+                    <p>Compound movements, controlled form, and progressive overload to build a stronger base.</p>
+                    <div class="pill-row">
+                        <span class="pill">Push</span>
+                        <span class="pill">Pull</span>
+                        <span class="pill">Legs</span>
+                    </div>
+                </article>
+                <article class="routine-card">
+                    <h3>Conditioning</h3>
+                    <p>Cardio and athletic work that keeps energy high and supports better recovery.</p>
+                    <div class="pill-row">
+                        <span class="pill">Endurance</span>
+                        <span class="pill">Mobility</span>
+                    </div>
+                </article>
+                <article class="routine-card">
+                    <h3>Nutrition</h3>
+                    <p>Consistent meals, enough protein, and practical habits that fit real life.</p>
+                    <div class="pill-row">
+                        <span class="pill">Protein</span>
+                        <span class="pill">Hydration</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="fitness-section">
+            <div class="section-head">
+                <h2>5-Day Training Program</h2>
+                <p>A PureGym-style weekly split focused on fat loss, chest development, stamina, and stronger overall conditioning.</p>
+            </div>
+            <div class="program-grid">
+                <a class="program-card" href="fitness-monday.html">
+                    <span class="day">Monday</span>
+                    <h3>Heavy Chest + Cardio</h3>
+                    <ul>
+                        <li>10 min treadmill incline walk</li>
+                        <li>Barbell Bench Press - 4 x 8</li>
+                        <li>Incline Dumbbell Press - 4 x 10</li>
+                        <li>Chest Press Machine - 3 x 12</li>
+                        <li>Cable Fly - 3 x 15</li>
+                        <li>Push-ups - 3 x max reps</li>
+                        <li>15 min incline walk or Stairmaster</li>
+                    </ul>
+                </a>
+                <a class="program-card" href="fitness-tuesday.html">
+                    <span class="day">Tuesday</span>
+                    <h3>Pull + Fat Burn</h3>
+                    <ul>
+                        <li>Lat Pulldown - 4 x 10</li>
+                        <li>Seated Row - 4 x 12</li>
+                        <li>Dumbbell Curl - 3 x 12</li>
+                        <li>Hammer Curl - 3 x 12</li>
+                        <li>Face Pull - 3 x 15</li>
+                        <li>HIIT: 30 sec sprint, 90 sec slow pace x 10 rounds</li>
+                    </ul>
+                </a>
+                <a class="program-card" href="fitness-wednesday.html">
+                    <span class="day">Wednesday</span>
+                    <h3>Chest Volume + Core</h3>
+                    <ul>
+                        <li>Incline Bench Press - 4 x 8</li>
+                        <li>Dumbbell Bench Press - 4 x 10</li>
+                        <li>Pec Deck - 3 x 15</li>
+                        <li>Decline Push-ups - 3 x max reps</li>
+                        <li>Core circuit: plank, leg raises, Russian twists, crunches</li>
+                    </ul>
+                </a>
+                <a class="program-card" href="fitness-thursday.html">
+                    <span class="day">Thursday</span>
+                    <h3>Legs + Cardio</h3>
+                    <ul>
+                        <li>Leg Press - 4 x 12</li>
+                        <li>Squats - 4 x 10</li>
+                        <li>Romanian Deadlift - 3 x 10</li>
+                        <li>Leg Curl - 3 x 12</li>
+                        <li>Calf Raises - 4 x 15</li>
+                        <li>20-25 min incline walk</li>
+                    </ul>
+                </a>
+                <a class="program-card" href="fitness-friday.html">
+                    <span class="day">Friday</span>
+                    <h3>Chest + Upper Power</h3>
+                    <ul>
+                        <li>Bench Press - 5 x 5</li>
+                        <li>Incline Dumbbell Press - 4 x 8</li>
+                        <li>Shoulder Press - 4 x 10</li>
+                        <li>Tricep Pushdown - 3 x 12</li>
+                        <li>Dips - 3 x max reps</li>
+                        <li>15 min rowing machine</li>
+                    </ul>
+                </a>
+            </div>
+            <div class="nutrition-panel">
+                <div class="section-head">
+                    <h3>Nutrition Guide</h3>
+                    <p>Simple food choices and habits to support weight loss while building muscle.</p>
+                </div>
+                <div class="nutrition-grid">
+                    <ul class="nutrition-list">
+                        <li>Protein target: 1.6-2.2g per kg of bodyweight</li>
+                        <li>Drink 2-3L water daily</li>
+                        <li>Stay in a calorie deficit for fat loss</li>
+                        <li>Aim for 7-8 hours of sleep</li>
+                        <li>Optional: creatine, whey protein, black coffee before training</li>
+                    </ul>
+                    <div class="meal-example">
+                        <div><strong>Breakfast:</strong> Oats, banana, Greek yogurt</div>
+                        <div><strong>Lunch:</strong> Chicken, rice, vegetables</div>
+                        <div><strong>Snack:</strong> Protein shake and fruit</div>
+                        <div><strong>Dinner:</strong> Salmon or chicken with potatoes and salad</div>
+                        <div><strong>Late snack:</strong> Greek yogurt or boiled eggs</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fitness-section">
+            <div class="section-head">
+                <h2>Mindset</h2>
+                <p>The same qualities that improve training also improve project work.</p>
+            </div>
+            <div class="mindset-list">
+                <div class="mindset-item"><span>Consistency</span><p>Small actions repeated until they become reliable.</p></div>
+                <div class="mindset-item"><span>Discipline</span><p>Showing up with intent, even when motivation is low.</p></div>
+                <div class="mindset-item"><span>Patience</span><p>Respecting progress as something built over time.</p></div>
+                <div class="mindset-item"><span>Resilience</span><p>Learning from difficult sessions instead of avoiding them.</p></div>
+            </div>
+        </section>
+    </main>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,bg', autoDisplay: false }, 'google_translate_element');
+            setTimeout(applySavedLanguage, 1000);
+        }
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('preferredLang') || 'en';
+            changeLanguage(currentLang === 'en' ? 'bg' : 'en');
+        }
+        function changeLanguage(langCode) {
+            const select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = langCode;
+                select.dispatchEvent(new Event('change'));
+                localStorage.setItem('preferredLang', langCode);
+                updateButtonText(langCode);
+            }
+        }
+        function applySavedLanguage() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && savedLang !== 'en') changeLanguage(savedLang);
+            else updateButtonText('en');
+        }
+        function updateButtonText(lang) {
+            const btn = document.getElementById('lang-text');
+            if (btn) btn.innerText = lang === 'en' ? 'BG' : 'EN';
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+window.toggleMenu = window.toggleMenu || function () {
+    var nav = document.getElementById('site-nav');
+    var btn = document.querySelector('.nav-toggle');
+    if (!nav || !btn) return false;
+    var open = nav.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', String(open));
+    return open;
+};
+</script>
+<script src="site-enhancements.js"></script>
+</body>
+</html>
