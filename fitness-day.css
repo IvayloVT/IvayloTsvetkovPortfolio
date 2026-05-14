@@ -256,6 +256,21 @@ h1 {
 }
 
 @media (max-width: 768px) {
+    body .site-header .logo {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        max-width: calc(100vw - 148px) !important;
+        white-space: nowrap !important;
+        font-size: clamp(1.22rem, 5.7vw, 1.65rem) !important;
+        letter-spacing: 0.035em !important;
+        overflow: hidden !important;
+        text-overflow: clip !important;
+    }
+
+    body .site-header .nav-toggle {
+        flex: 0 0 auto !important;
+    }
+
     .container,
     .day-hero,
     .day-section,
