@@ -59,7 +59,6 @@
                         '<a href="about.html">About</a>' +
                         '<a href="portfolio.html">Portfolio</a>' +
                         '<a href="blog.html">Blog</a>' +
-                        '<a href="news.html">News</a>' +
                         '<a href="fitness.html">Fitness</a>' +
                         '<a href="contact.html">Contact</a>' +
                     '</div>' +
